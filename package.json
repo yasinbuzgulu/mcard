@@ -1,0 +1,9 @@
+{
+  "name": "typescript",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "bourbon": "^7.0.0",
+    "neat": "^2.1.0"
+  }
+}
