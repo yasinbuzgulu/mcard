@@ -9,38 +9,41 @@
 </head>
 
 <body class="is-preload">
+<section class="banner style1 orient-left content-align-left image-position-right">
+
 	<nav class="navbar">
 
 			<a href="#">
 				<img class="navbar_logo" src="https://www.themall.co.th/images/img_mcard.png" width="120" height="120">
-
-
+			</a>
 		<ul class="navbar-menu">
 			<li class="navbar__item">
-				<a href="/" class="navbar__links"> Anasayfa</a>
+				<a href="#mainPage" class="navbar__links"> Anasayfa</a>
 			</li>
 			<li class="navbar__item">
-				<a href="/" class="navbar__links"> Kullanıcı</a>
-			<li class="navbar__item">
-				<a href="/" class="navbar__links"> Şehir</a>
+				<a href="#applicantPage" id="applicaButtonn" class="navbar__links"> Kullanıcı</a>
 			</li>
 			<li class="navbar__item">
-				<a href="/card.html" class="navbar__links"> Kart</a>
+				<a href="#cityPage" id="cityButton" class="navbar__links"> Şehir</a>
 			</li>
 			<li class="navbar__item">
-				<a href="/" class="navbar__links"> Hakkımızda</a>
+				<a href="#cardPage" id="cardButton" class="navbar__links"> Kart</a>
 			</li>
 			<li class="navbar__item">
-				<a href="/" class="navbar__links"> İletişim</a>
+				<a href="#aboutUsPage" class="navbar__links"> Hakkımızda</a>
+			</li>
+			<li class="navbar__item">
+				<a href="#contactPage" class="navbar__links"> İletişim</a>
 			</li>
 			<li class="navbar__btn">
-				<a href="/" class="button">Başvur</a>
+				<a href="#cardPage" id="cardButton" class="button">Başvur</a>
 			</li>
 		</ul>
-
 	</nav>
-	<hr>
+	</section>
 
+	<hr>
+<section id ="mainPage">
 	<div class="image-center">
 		<figure>
 			<p>Platformu tanıyın!</p>
@@ -52,17 +55,148 @@
 			</figcaption>
 		</figure>
 	</div>
+</section>
+
 
 <br>
+<section id = "applicantPage">
+	<br>
 <br>
 <br>
+<div class="container-mainPage">
+<div>
+	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input  id="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input id="applicantSurnameAttach"  type="text" placeholder="Soyisminizi Giriniz" required>
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input id="applicantBirthDateAttach" type="date" placeholder="Doğum Tarihinizi Giriniz" required>
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input id="applicantIDAttach" type="number" placeholder="Kimlik Numaranızı Giriniz" required>
+			</label>
+		</div>
+
+		<div id="selectCitizenType" class="citizenField" >
+		<label for="CitizenType"> Başvuran Tipi (Yaşa Göre): </label>
+	<select id="citizenTypeSelection" style="width: 350px">
+	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
+		<option value='blue'>Çocuk(0-7)</option>
+		<option value='green'>Normal(8-64)</option>
+	<option value='green'>Yaşlı(65+)</option>
+	</select>
+</div>
+		
+<div>
+<label for="ApplicantType"> Başvuran Tipi (Eğitime Göre): </label>
+<select id="applicatTypeSelection" style="width: 350px">
+	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
+		<option value='blue'>Öğrenci</option>
+		<option value='green'>Sivil</option>
+		<option value='red'>İkisi de değil</option>
+	</select>
+</div>
+<a1 id="newUserSavingButton" href="#userSaving-result" type="submit"> Kaydet </a1>
+
+</div>
+</div>
+<br>
+<br>
+</section>
+
+
+<section id = "cityPage">
+
+<div class="container-cityPage">
+<div>
+	<h5 class="title">Yeni Şehir & Olanak Kaydı</h5>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input type="text" required>
+				<span class="omrs-input-label">Şehir İsmi</span>
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input type="text" required>
+				<span class="omrs-input-label">Olanak İsmi</span>
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input type="number" required>
+				<span class="omrs-input-label">1 Yıllık Ücret</span>	
+			</label>
+		</div>
+		<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input type="number" required>
+				<span class="omrs-input-label">Tanımlanabilen Max. Yıl</span>
+			</label>
+		</div>			
+<input id="newCityAndOpportunitySavingButton" type="submit" value="Kaydet">
+
+</div>
+</div>
+<br>
+<br>
+</section>
+
+
+	<section id = "cardPage">
+
+	<div class="container-cardPage">
 	<div>
+		<h5 class="title">Yeni Kart Kaydı</h5>
+			<div class="omrs-input-group">
+				<label class="omrs-input-underlined">
+				  <input type="list" required>
+				  <span class="omrs-input-label">Kullanıcı Seçiniz</span>
+				</label>
+			</div>
+			<div class="omrs-input-group">
+				<label class="omrs-input-underlined">
+				  <input required>
+				  <span class="omrs-input-label">Şehir Seçiniz</span>
+				</label>
+			</div>
+			<div class="omrs-input-group">
+				<label class="omrs-input-underlined">
+				  <input required>
+				  <span class="omrs-input-label">Olanak Seçiniz</span>	
+				</label>
+			</div>
+	<input type="submit" value="Başvur">
 
 	</div>
+</div>
+<br>
+<br>
+	
+
+
+	
 
 
 
-</body>
+
+		</section>
+		
+
+
+
+
+	</body>
 
 
 

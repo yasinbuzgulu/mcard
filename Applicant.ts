@@ -1,9 +1,12 @@
-import { IApplicant} from "./interface/IApplicant";
-import { CitizenType, ApplicantType} from "./enum/types";
 
+import { City } from "./City";
+import { ApplicantType, CitizenType } from "./typeScriptFiles/enum/types";
 /**
  * Program başvuran kişinin bilgilerinin saklandığı sınıf
  */
+
+import { IApplicant } from "./typeScriptFiles/interface/IApplicant";
+
 
 export class Applicant implements IApplicant {
 

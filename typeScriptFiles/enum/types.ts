@@ -1,8 +1,6 @@
 /**
  * Program içerisindeki başvuranların, şehir - fırsat bilgilerinin ve kart bilgilerinin listelendği enum sınıfları
  */
-
-
 export enum CitizenType {
   KID,
   NORMAL,
@@ -11,11 +9,13 @@ export enum CitizenType {
 
  export enum ApplicantType {
    STUDENT,
-   CIVIL
+   CIVIL,
+   NONE
  }
 
 export enum DiscountAmount {
   FULL,
-  PERCENTAGE
+  PERCENTAGE,
+  NONE
 }
 

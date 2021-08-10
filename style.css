@@ -5,9 +5,134 @@
   position: relative;
   top: 0;
   z-index: 999;
-  background-color: rgb(205, 240, 238);
-  font-family: 'Space Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
+
+/** BEGIN: Non Openmrs CSS **/
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+* {
+  font-family: 'Poppins', sans-serif;
+}
+div.container-mainPage, div.container-cityPage, div.container-cardPage{
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+	margin-top: 30px;
+  margin-bottom: 30px;
+	border: 1px solid whitesmoke;
+	padding: 21px;
+	border-radius: 4px;
+}
+h5.title {
+  margin-top: 45px;
+	text-align: center;
+	margin-bottom: 45px;
+  font-size: 25px;
+}
+:root {
+	--omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
+	--omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
+	--omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
+	--omrs-color-interaction: #1e4bd1;
+	--omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
+	--omrs-color-danger: #b50706;
+	--omrs-color-bg-low-contrast: #eff1f2;
+	--omrs-color-ink-high-contrast: #121212;
+	--omrs-color-bg-high-contrast: #ffffff;
+	
+}
+/** END: Non Openmrs CSS **/
+div.omrs-input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 20.4375rem;
+}
+
+/* Input*/
+.omrs-input-underlined > input{
+	border: none;
+	border-bottom: 0.125rem solid var(--omrs-color-ink-medium-contrast);
+	width: 100%;
+	height: 4rem;
+	font-size: 1.0625rem;
+	padding-left: 0.875rem;
+	line-height: 120.6%;
+	padding-top: 0.825rem;
+	padding-bottom: 0.5rem;
+}
+
+.omrs-input-underlined > input:focus {
+	outline: none;
+}
+
+.omrs-input-underlined > .omrs-input-label{
+	position: absolute;
+	top: 0.9375rem;
+	left: 0.875rem;
+	line-height: 147.6%;
+	color: var(--omrs-color-ink-medium-contrast);
+	transition: top .2s;
+  
+}
+
+.omrs-input-underlined > input:focus + .omrs-input-label,
+.omrs-input-underlined > input:valid + .omrs-input-label {
+	top: 0;
+	font-size: 1.0375rem;
+	margin-bottom: 32px;;
+}
+
+.omrs-input-underlined:not(.omrs-input-danger) > input:focus {
+	border-color: var(--omrs-color-interaction);
+}
+
+.omrs-input-underlined:not(.omrs-input-danger) > input:focus ~ svg{
+	fill: var(--omrs-color-ink-high-contrast);
+}
+
+input[type=text], select, a1 {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit], a1 {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  margin: 8px 0px ;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover, a1:hover {
+  background-color: #3fd2f7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .wrapper {
   max-width: 600px;
@@ -16,29 +141,25 @@
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-input {
-  display: none;
-}
 
 label {
   display: flex;
   width: 100%;
   height: 50px;
   cursor: pointer;
-  border: 3px solid #3e474f;
-  user-select: none;
+  user-select: text;
 }
 
 label div:first-child {
   width: 100%;
   line-height: 45px;
   margin-left: 10px;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .cross {
@@ -63,7 +184,7 @@ label div:first-child {
 
 .content {
   box-sizing: border-box;
-  font-size: 0.9em;
+  font-size: 1.5em;
   margin: 10px 10px;
   max-height: 0;
   overflow: hidden;
@@ -138,7 +259,7 @@ input:checked ~ .questions {
   color: white;
   width: 150px;
   padding: 10px;
-  font-size: 0.8em;
+  font-size: 1.5em;
   bottom: 150%;
   left: -50%;
 }
@@ -316,11 +437,11 @@ h2:hover {
 }
 
 .button:hover {
-  background: #4837ff;
+  background: #14aae6;
   transition: all 0.3s ease;
 }
 .navbar__links:hover {
-  color: #ee0303;
+  color: #070505;
   transition: all 0.1s ease;
 }
 
