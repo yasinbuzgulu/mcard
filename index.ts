@@ -1,24 +1,20 @@
+import { Applicant } from './Applicant';
+import { ApplicantManager } from './ApplicantManager';
+import { City } from './City';
+import { DataStorage } from './DataStorage';
 // Import stylesheets
 import './style.css';
 
-// Write TypeScript code!
+let count = 0;
 
-var acc = document.getElementsByClassName("accordion");
-var i;
+let cityList = DataStorage.createCityList();
+let applicantList = DataStorage.createApplicantlist();
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
+const saveNewUser: HTMLElement = document.getElementById("newUserSavingButton");
+saveNewUser.onclick = function() {
+ApplicantManager.createApplicantObject();
 
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-} 
+};
+
+
 
