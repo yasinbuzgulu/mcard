@@ -14,13 +14,13 @@ export class Applicant implements IApplicant {
   private _applicantSurname: string;
   private _applicantBirthDate: Date;
   private _applicantID: number;
-  private _typeOfApplicantBasedOnAge: CitizenType;
-  private _typeOfApplicantBasedOnEducation: ApplicantType;
+  private _typeOfApplicantBasedOnAge: string;
+  private _typeOfApplicantBasedOnEducation: string;
 
   constructor(applicantName: string, applicantSurname: string,
      applicantBirthDate: Date, _applicantID: number,
-     typeOfApplicantBasedOnAge: CitizenType,
-     typeOfApplicantBasedOnEducation: ApplicantType) {
+     typeOfApplicantBasedOnAge: string,
+     typeOfApplicantBasedOnEducation: string) {
  
         this._applicantName = applicantName;
         this._applicantSurname = applicantSurname;
@@ -61,14 +61,14 @@ export class Applicant implements IApplicant {
     get ApplicantTypeBasedOnAge() {
       return this._typeOfApplicantBasedOnAge;
     }
-    set ApplicantTypeBasedOnAge(applicantTypeBasedOnAge : CitizenType){
+    set ApplicantTypeBasedOnAge(applicantTypeBasedOnAge : string){
       this._typeOfApplicantBasedOnAge = applicantTypeBasedOnAge;
     }
 
     get ApplicantTypeBasedOnEducation() {
       return this._typeOfApplicantBasedOnEducation;
     }
-    set ApplicantTypeBasedOnEducation(applicantTypeBasedOnEducation : number){
+    set ApplicantTypeBasedOnEducation(applicantTypeBasedOnEducation : string){
       this._typeOfApplicantBasedOnEducation = applicantTypeBasedOnEducation;
     }
     

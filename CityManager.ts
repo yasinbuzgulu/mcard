@@ -1,5 +1,6 @@
 import { City } from './City';
 import { DataStorage } from './DataStorage';
+import { ListManager } from './ListManager';
 
 export class CityManager {
 
@@ -12,5 +13,8 @@ export class CityManager {
     let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value))
     DataStorage.cities.push(newCityAndOpportunity)
     
+    console.log(newCityAndOpportunity);
+    DataStorage.cities.push(newCityAndOpportunity);
+    ListManager.updateCityOpportunityList();
   }
 }

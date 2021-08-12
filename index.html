@@ -64,54 +64,74 @@
 <br>
 <br>
 <div class="container-mainPage">
-<div>
+<div> 
 	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
-		<div class="omrs-input-group">
+		<div class="omrs-input-group" >
 			<label class="omrs-input-underlined">
-				<input  id="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
+				<input minlength="2" maxlength="25"  id="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantSurnameAttach"  type="text" placeholder="Soyisminizi Giriniz" required>
+				<input minlength="2" maxlength="25" id="applicantSurnameAttach"  type="text" placeholder="Soyisminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantBirthDateAttach" type="date" placeholder="Doğum Tarihinizi Giriniz" required>
+				<input min="2018-01-01" id="applicantBirthDateAttach" type="date" placeholder="Doğum Tarihinizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantIDAttach" type="number" placeholder="Kimlik Numaranızı Giriniz" required>
+				<input id="applicantIDAttach"  type="tel" maxlength="11" minlength="11" placeholder="Kimlik Numaranızı Giriniz" required>
 			</label>
 		</div>
-
 		<div id="selectCitizenType" class="citizenField" >
 		<label for="CitizenType"> Başvuran Tipi (Yaşa Göre): </label>
-	<select id="citizenTypeSelection" style="width: 350px">
+	<select required id="citizenTypeSelection" style="width: 350px">
 	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
-		<option value='blue'>Çocuk(0-7)</option>
-		<option value='green'>Normal(8-64)</option>
-	<option value='green'>Yaşlı(65+)</option>
+		<option value='0'>Çocuk(0-7)</option>
+		<option value='1'>Normal(8-64)</option>
+	<option value='2'>Yaşlı(65+)</option>
 	</select>
-</div>
-		
+</div>	
 <div>
 <label for="ApplicantType"> Başvuran Tipi (Eğitime Göre): </label>
-<select id="applicatTypeSelection" style="width: 350px">
+<select required id="applicatTypeSelection" style="width: 350px">
 	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
-		<option value='blue'>Öğrenci</option>
-		<option value='green'>Sivil</option>
-		<option value='red'>İkisi de değil</option>
+		<option value='0'>Öğrenci</option>
+		<option value='1'>Sivil</option>
+		<option value='2'>İkisi de değil</option>
 	</select>
 </div>
 <a1 id="newUserSavingButton" href="#userSaving-result" type="submit"> Kaydet </a1>
+<a1 id="listUserButton" href="#userListing-result" type="submit"> Listele </a1>
+</div>
+</div>
+<br>
+<br>
+</section>
+<section class="wrapper style1 align-center" id="userListSection">
+<div class="inner">
+	<header>
+		<h3>Kayıtlı Kullanıcı Tablosu</h3>
+	</header>
+	<div class="content">
+		<div class="table-wrapper" id="userTableId">
+		<table id="tableEx">
+		<tbody></tbody>
+	</table>
+		</div>
+		<ul class="actions fit ">
+		<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
+		</li>
+	</ul>
 
+		<div class="table wrapper" id="discountAppendFormDiv"> 		</div>
+			<div class="table wrapper" id="discountEditFormDiv"> 			</div>
+
+	</div>
 </div>
-</div>
-<br>
-<br>
 </section>
 
 
@@ -121,36 +141,60 @@
 <div>
 	<h5 class="title">Yeni Şehir & Olanak Kaydı</h5>
 		<div class="omrs-input-group">
-			<label class="omrs-input-underlined">
-				<input type="text" required>
+			<label class="omrs-input-underlined" id="cityLabel">
+				<input minlength="2" maxlength="15" id="cityNameAttach" type="text" required>
 				<span class="omrs-input-label">Şehir İsmi</span>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input type="text" required>
+				<input minlength="2" maxlength="25" id="opportunityNameAttach" type="text" required>
 				<span class="omrs-input-label">Olanak İsmi</span>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input type="number" required>
+				<input id="perYearPriceAttatch" type="number" required>
 				<span class="omrs-input-label">1 Yıllık Ücret</span>	
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input type="number" required>
+				<input id="topLimitYearValueAttach" type="number" required>
 				<span class="omrs-input-label">Tanımlanabilen Max. Yıl</span>
 			</label>
 		</div>			
 <input id="newCityAndOpportunitySavingButton" type="submit" value="Kaydet">
-
 </div>
 </div>
 <br>
 <br>
 </section>
+<section class="wrapper style1 align-center" id="cityOpportunityListSection">
+<div class="inner">
+	<header>
+		<h3>Kayıtlı Şehir-Olanak Tablosu</h3>
+	</header>
+	<div class="content">
+		<div class="table-wrapper" id="discountTableDiv">
+		</div>
+	</div>
+</div>
+<nav>
+	<ul class="actions fit ">
+		<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
+	</ul>
+</nav>
+<div class="inner">
+	<div class="content">
+		<div class="table wrapper" id="discountAppendFormDiv">
+			<div class="table wrapper" id="discountEditFormDiv">
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
 
 
 	<section id = "cardPage">
@@ -158,40 +202,45 @@
 	<div class="container-cardPage">
 	<div>
 		<h5 class="title">Yeni Kart Kaydı</h5>
-			<div class="omrs-input-group">
+			<div class="omrs-input-group" id="userField">
 				<label class="omrs-input-underlined">
-				  <input type="list" required>
-				  <span class="omrs-input-label">Kullanıcı Seçiniz</span>
+				  <span class="omrs-input-label">Kullanıcı Seçimi:</span>
 				</label>
 			</div>
-			<div class="omrs-input-group">
+			<div class="omrs-input-group" id="cityOpportunityField">
 				<label class="omrs-input-underlined">
-				  <input required>
-				  <span class="omrs-input-label">Şehir Seçiniz</span>
+				  <span class="omrs-input-label">Şehir-Olanak Seçimi:</span>
 				</label>
 			</div>
-			<div class="omrs-input-group">
-				<label class="omrs-input-underlined">
-				  <input required>
-				  <span class="omrs-input-label">Olanak Seçiniz</span>	
-				</label>
-			</div>
+
 	<input type="submit" value="Başvur">
 
 	</div>
 </div>
 <br>
 <br>
-	
+			</section>
+			<section class="wrapper style1 align-center" id="cardListSection">
+			<div class="inner">
+				<header>
+					<h3>Kayıtlı Kart Tablosu</h3>
+				</header>
+				<div class="content">
+					<div class="table-wrapper" id="discountTableDiv">
+					</div>
+				</div>
+			</div>
+			<nav>
+				<ul class="actions fit ">
+					<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
 
-
-	
-
-
-
-
+				</ul>
+			</nav>
+			<div class="inner">
+					</div>
+				</div>
+			</div>
 		</section>
-		
 
 
 
