@@ -49,6 +49,7 @@ export class ListManager {
   static createUserList(userList) {
 
     let userTable = document.getElementById("userTableId");
+    
     let table = document.createElement("table");
     let t1body = document.createElement("tbody");
     table.id = "userTableReferedId";
@@ -70,35 +71,34 @@ export class ListManager {
       let cell = document.createElement("td");
       let cellText = document.createTextNode(userList[i].ApplicantName);
       cell.appendChild(cellText);
-      cell = document.createElement("td");
-      let countOfUsers = 0 ;
-
       row.appendChild(cell);
-      cell = document.createElement("td");
-      cellText = document.createTextNode(userList[i].ApplicantSurname);
-      cell.appendChild(cellText);
 
-      row.appendChild(cell);
-      cell = document.createElement("td");
-      cellText = document.createTextNode(userList[i].ApplicantBirthDate);
-      cell.appendChild(cellText);
 
-      row.appendChild(cell);
-      cell = document.createElement("td");
-      cellText = document.createTextNode(userList[i].ApplicantID);
-      cell.appendChild(cellText);
+      let cell_1 = document.createElement("td");
+      let cellText_1 = document.createTextNode(userList[i].ApplicantSurname);
+      cell_1.appendChild(cellText_1);
+      row.appendChild(cell_1);
 
-      row.appendChild(cell);
-      cell = document.createElement("td");
-      cellText = document.createTextNode(userList[i].ApplicantTypeBasedOnAge);
-      cell.appendChild(cellText);
+      let cell_2 = document.createElement("td");
+      let cellText_2 = document.createTextNode(userList[i].ApplicantBirthDate);
+      cell_2.appendChild(cellText_2);
+      row.appendChild(cell_2);
 
-      row.appendChild(cell);
-      cell = document.createElement("td");
+      let cell_3 = document.createElement("td");
+      let cellText_3 = document.createTextNode(userList[i].ApplicantID);
+      cell_3.appendChild(cellText_3);
+      row.appendChild(cell_3);
+
+      let cell_4 = document.createElement("td");
+      let cellText_4 = document.createTextNode(userList[i].ApplicantTypeBasedOnAge);
+      cell_4.appendChild(cellText_4);
+      row.appendChild(cell_4);
+
+      let cell_5 = document.createElement("td");
       cellText = document.createTextNode(userList[i].ApplicantTypeBasedOnEducation);
       cell.appendChild(cellText);
-
       row.appendChild(cell);
+
       let cellButtonDelete = document.createElement("button");
       cell = document.createElement("td");
       cellButtonDelete.innerHTML = "Sil";
@@ -123,6 +123,7 @@ export class ListManager {
         return;
         
       });
+      
       cell.appendChild(cellEditButton);
       row.appendChild(cell);
        t1body.appendChild(row);
@@ -139,5 +140,8 @@ export class ListManager {
     ListManager.createUserList(DataStorage.applicants);
   }
 
-
+static removeLast() {
+ // DataStorage.applicants.pop();
+  DataStorage.applicants.splice(-1,1)
+}
 }

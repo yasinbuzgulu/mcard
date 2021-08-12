@@ -30,7 +30,7 @@ saveNewUser.onclick = function() {
 
 const listUsers: HTMLElement = document.getElementById("listUserButton");
 listUsers.onclick = function() {
-  state = 3;
+  
   userTableSection.style.display = "inline";
   cityOpportunityListSection.style.display = "none";
   cardListSection.style.display = "none";

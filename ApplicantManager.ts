@@ -9,11 +9,12 @@ export class ApplicantManager {
 
   static createApplicantObject () {
     let applicantName =<HTMLInputElement>document.getElementById("applicantNameAttach");
-    Verifications.checkText(applicantName);
+   // Verifications.checkText(applicantName);
     let applicantSurname =<HTMLInputElement>document.getElementById("applicantSurnameAttach");
+   // Verifications.checkText(applicantSurname);
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
-    Verifications.checkID(applicantID);
+    //Verifications.checkID(applicantID);
     
 
     const  selectedTypeOfApplicantBasedOnAgeInput = <HTMLInputElement>(document.getElementById("citizenTypeSelection"));

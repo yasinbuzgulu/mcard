@@ -63,12 +63,13 @@
 	<br>
 <br>
 <br>
+<form action="" method="get" class="omrs-input-group" >
 <div class="container-mainPage">
-<div> 
+<div > 
 	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
 		<div class="omrs-input-group" >
-			<label class="omrs-input-underlined">
-				<input minlength="2" maxlength="25"  id="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
+			<label for="applicantNameAttach" class="omrs-input-underlined">
+				<input minlength="2" maxlength="25"  id="applicantNameAttach" name="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
@@ -83,7 +84,7 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantIDAttach"  type="tel" maxlength="11" minlength="11" placeholder="Kimlik Numaranızı Giriniz" required>
+				<input id="applicantIDAttach"  type="number" maxlength="11" minlength="11" placeholder="Kimlik Numaranızı Giriniz" required>
 			</label>
 		</div>
 		<div id="selectCitizenType" class="citizenField" >
@@ -108,6 +109,7 @@
 <a1 id="listUserButton" href="#userListing-result" type="submit"> Listele </a1>
 </div>
 </div>
+</form>
 <br>
 <br>
 </section>
@@ -118,9 +120,7 @@
 	</header>
 	<div class="content">
 		<div class="table-wrapper" id="userTableId">
-		<table id="tableEx">
-		<tbody></tbody>
-	</table>
+
 		</div>
 		<ul class="actions fit ">
 		<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
