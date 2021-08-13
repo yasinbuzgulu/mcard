@@ -11,15 +11,13 @@ export class Card implements ICard {
   private _identity: number;
   private _price: number;
   private _expiryDate: Date;
-  private _discountAmount : DiscountAmount;
   private city:City ;
   private applicant:Applicant;
 
-  constructor(identity: number, price:number, expiryDate: Date, discountAmount : DiscountAmount, applicant:Applicant, city:City ){
+  constructor(identity: number, price:number, expiryDate: Date, applicant:Applicant, city:City ){
     this._identity = identity;
     this._price = price;
     this._expiryDate = expiryDate;
-    this._discountAmount = discountAmount;
     this.applicant = applicant;
     this.city = city;
 
@@ -52,11 +50,5 @@ export class Card implements ICard {
     this._expiryDate = expiryDate;
   }
 
-  get DiscountAmount() {
-    return this._discountAmount;
-  }
-  set DiscountAmount(discountAmount) {
-    this._discountAmount = discountAmount;
-  }
 
 }

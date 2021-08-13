@@ -33,7 +33,19 @@ static createCityList() {
   this.cities.push(
       {
         CityName: "İstanbul",
+        OpportunityName: "Otopark",
+        PerYearPrice: 225,
+        TopLimitYearValue: 1
+      },
+      {
+        CityName: "İstanbul",
         OpportunityName: "Kütüphane",
+        PerYearPrice: 400,
+        TopLimitYearValue: 3
+      },
+      {
+        CityName: "İstanbul",
+        OpportunityName: "Tiyatro",
         PerYearPrice: 400,
         TopLimitYearValue: 3
       },

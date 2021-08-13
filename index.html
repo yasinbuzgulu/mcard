@@ -9,7 +9,7 @@
 </head>
 
 <body class="is-preload">
-<section class="banner style1 orient-left content-align-left image-position-right">
+<section id="topPage" class="banner style1 orient-left content-align-left image-position-right">
 
 	<nav class="navbar">
 
@@ -63,7 +63,7 @@
 	<br>
 <br>
 <br>
-<form action="" method="get" class="omrs-input-group" >
+<form id="userForm" action="" method="get" class="omrs-input-group" >
 <div class="container-mainPage">
 <div > 
 	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
@@ -105,40 +105,21 @@
 		<option value='2'>İkisi de değil</option>
 	</select>
 </div>
-<a1 id="newUserSavingButton" href="#userSaving-result" type="submit"> Kaydet </a1>
-<a1 id="listUserButton" href="#userListing-result" type="submit"> Listele </a1>
+<input id="newUserSavingButton" type="reset"   value="Kaydet" value="Reset">
+<a1 id="listUserButton" href="#userListSection" type="submit"> Listele </a1>
 </div>
 </div>
 </form>
 <br>
 <br>
 </section>
-<section class="wrapper style1 align-center" id="userListSection">
-<div class="inner">
-	<header>
-		<h3>Kayıtlı Kullanıcı Tablosu</h3>
-	</header>
-	<div class="content">
-		<div class="table-wrapper" id="userTableId">
 
-		</div>
-		<ul class="actions fit ">
-		<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
-		</li>
-	</ul>
-
-		<div class="table wrapper" id="discountAppendFormDiv"> 		</div>
-			<div class="table wrapper" id="discountEditFormDiv"> 			</div>
-
-	</div>
-</div>
-</section>
 
 
 <section id = "cityPage">
 
 <div class="container-cityPage">
-<div>
+	<form action="">
 	<h5 class="title">Yeni Şehir & Olanak Kaydı</h5>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined" id="cityLabel">
@@ -148,7 +129,7 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input minlength="2" maxlength="25" id="opportunityNameAttach" type="text" required>
+				<input  minlength="2" maxlength="25" id="opportunityNameAttach" type="text" required>
 				<span class="omrs-input-label">Olanak İsmi</span>
 			</label>
 		</div>
@@ -163,39 +144,15 @@
 				<input id="topLimitYearValueAttach" type="number" required>
 				<span class="omrs-input-label">Tanımlanabilen Max. Yıl</span>
 			</label>
-		</div>			
-<input id="newCityAndOpportunitySavingButton" type="submit" value="Kaydet">
-</div>
+		</div>
+		<input id="newCityAndOpportunitySavingButton" type="reset" value="Kaydet" value="Reset">
+			
+<a1 id="listCityOpportunityButton" href="#cityOpportunityListSection" type="submit"> Listele </a1>
+</form>
 </div>
 <br>
 <br>
 </section>
-<section class="wrapper style1 align-center" id="cityOpportunityListSection">
-<div class="inner">
-	<header>
-		<h3>Kayıtlı Şehir-Olanak Tablosu</h3>
-	</header>
-	<div class="content">
-		<div class="table-wrapper" id="discountTableDiv">
-		</div>
-	</div>
-</div>
-<nav>
-	<ul class="actions fit ">
-		<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
-	</ul>
-</nav>
-<div class="inner">
-	<div class="content">
-		<div class="table wrapper" id="discountAppendFormDiv">
-			<div class="table wrapper" id="discountEditFormDiv">
-			</div>
-		</div>
-	</div>
-</div>
-</section>
-
-
 
 	<section id = "cardPage">
 
@@ -213,34 +170,64 @@
 				</label>
 			</div>
 
-	<input type="submit" value="Başvur">
-
+			<a1 id="newCardSavingButton" type="submit">Başvur</a1>
+			
+			<a1 id="listCardButton" href="#cardListSection" type="submit"> Listele </a1>
 	</div>
 </div>
 <br>
 <br>
 			</section>
-			<section class="wrapper style1 align-center" id="cardListSection">
+			<section  id="userListSection">
+			<div class="inner">
+				<header>
+					<h3>Kayıtlı Kullanıcı Tablosu</h3>
+				</header>
+				<div class="content">
+				<select name="" id="userSelectId">
+					<div class="table-wrapper" id="userTableId">
+					</div>
+				</select>
+					<ul class="actions fit ">
+					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
+					</li>
+				</ul>
+				</div>
+			</div>
+			</section>
+
+			<section  id="cityOpportunityListSection">
+			<div class="inner">
+				<header>
+					<h3>Kayıtlı Şehir-Olanak Tablosu</h3>
+				</header>
+				<div class="content">
+					<div class="table-wrapper" id="cityOpportunityTableId">
+					</div>
+					<ul class="actions fit ">
+					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
+
+					</li>
+				</ul>
+				</div>
+			</div>
+			</section>
+
+			<section  id="cardListSection">
 			<div class="inner">
 				<header>
 					<h3>Kayıtlı Kart Tablosu</h3>
 				</header>
 				<div class="content">
-					<div class="table-wrapper" id="discountTableDiv">
+					<div class="table-wrapper" id="cardTableId">
 					</div>
-				</div>
-			</div>
-			<nav>
-				<ul class="actions fit ">
-					<li><a href="#mainPage" class="button large wide smooth-scroll-middle">Anasayfaya Dön</a></li>
+					<ul class="actions fit ">
+					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
 
 				</ul>
-			</nav>
-			<div class="inner">
-					</div>
 				</div>
 			</div>
-		</section>
+			</section>
 
 
 

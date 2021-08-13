@@ -29,7 +29,7 @@ export class ListManager {
     let selectList = document.createElement("select");
     selectList.id = "myCityOpportunitySelect";
     selectList.innerHTML = `<option value="none" selected disabled hidden required> 
-          Lütfen Şehir - Olanak Seçiniz`;
+          Lütfen Şehir-Olanak Seçiniz`;
           myCityOpportunity.appendChild(selectList);
 
     for (let i = 0; i < DataStorage.cities.length; i++) {
@@ -39,8 +39,7 @@ export class ListManager {
       selectList.appendChild(option);
     }
   }
-
-  static updateCityOpportunityList() {
+  static updateCityOpportunitySelectionList() {
     let myCityOpportunitySelectBox = document.getElementById("cityOpportunityField");
     myCityOpportunitySelectBox.innerHTML = '';
     ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
@@ -49,7 +48,6 @@ export class ListManager {
   static createUserList(userList) {
 
     let userTable = document.getElementById("userTableId");
-    
     let table = document.createElement("table");
     let t1body = document.createElement("tbody");
     table.id = "userTableReferedId";
@@ -73,32 +71,31 @@ export class ListManager {
       cell.appendChild(cellText);
       row.appendChild(cell);
 
-
-      let cell_1 = document.createElement("td");
-      let cellText_1 = document.createTextNode(userList[i].ApplicantSurname);
-      cell_1.appendChild(cellText_1);
-      row.appendChild(cell_1);
-
-      let cell_2 = document.createElement("td");
-      let cellText_2 = document.createTextNode(userList[i].ApplicantBirthDate);
-      cell_2.appendChild(cellText_2);
-      row.appendChild(cell_2);
-
-      let cell_3 = document.createElement("td");
-      let cellText_3 = document.createTextNode(userList[i].ApplicantID);
-      cell_3.appendChild(cellText_3);
-      row.appendChild(cell_3);
-
-      let cell_4 = document.createElement("td");
-      let cellText_4 = document.createTextNode(userList[i].ApplicantTypeBasedOnAge);
-      cell_4.appendChild(cellText_4);
-      row.appendChild(cell_4);
-
-      let cell_5 = document.createElement("td");
-      cellText = document.createTextNode(userList[i].ApplicantTypeBasedOnEducation);
+      cell = document.createElement("td");
+      cellText = document.createTextNode(userList[i].ApplicantSurname);
       cell.appendChild(cellText);
       row.appendChild(cell);
 
+      cell = document.createElement("td");
+      cellText = document.createTextNode(userList[i].ApplicantBirthDate);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(userList[i].ApplicantID);
+      cell.appendChild(cellText);
+
+      row.appendChild(cell);
+      cell = document.createElement("td");
+      cellText = document.createTextNode(userList[i].ApplicantTypeBasedOnAge);
+      cell.appendChild(cellText);
+
+      row.appendChild(cell);
+      cell = document.createElement("td");
+      cellText = document.createTextNode(userList[i].ApplicantTypeBasedOnEducation);
+      cell.appendChild(cellText);
+
+      row.appendChild(cell);
       let cellButtonDelete = document.createElement("button");
       cell = document.createElement("td");
       cellButtonDelete.innerHTML = "Sil";
@@ -123,7 +120,6 @@ export class ListManager {
         return;
         
       });
-      
       cell.appendChild(cellEditButton);
       row.appendChild(cell);
        t1body.appendChild(row);
@@ -139,8 +135,85 @@ export class ListManager {
     element.parentNode.removeChild(element);
     ListManager.createUserList(DataStorage.applicants);
   }
+  static createCityOpportunityList(cityOpportunityList) {
 
-static removeLast() {
+    let cityOpportunityTable = document.getElementById("cityOpportunityTableId");
+    let table = document.createElement("table");
+    let t1body = document.createElement("tbody");
+    table.id = "cityOpportunityTableReferedId";
+    table.innerHTML = `<thead>
+                              <tr>
+                              <th>Şehir İsmi</th>
+                              <th>Olanak İsmi</th>
+                              <th>1 Yıl için Ücreti</th>
+                              <th>Tanımlanabileceği Max. Yıl</th>
+                              <th>Sil</th>
+                              <th>Düzenle</th>
+                              </tr>
+				    			    </thead>`;
+                      cityOpportunityTable.appendChild(table);
+    for(let i = 0; i<cityOpportunityList.length; i++) {
+      let row = document.createElement("tr");
+      let cell = document.createElement("td");
+      let cellText = document.createTextNode(cityOpportunityList[i].CityName);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cityOpportunityList[i].OpportunityName);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cityOpportunityList[i].PerYearPrice);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cityOpportunityList[i].TopLimitYearValue);
+      cell.appendChild(cellText);
+
+      row.appendChild(cell);
+      let cellButtonDelete = document.createElement("button");
+      cell = document.createElement("td");
+      cellButtonDelete.innerHTML = "Sil";
+
+      cellButtonDelete.addEventListener("click", function () {
+        let confirmDelete = confirm ("Şehir - Olanak bilgisini silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+        if (confirmDelete) {DataStorage.cities = DataStorage.cities.filter (cityOpportunity => cityOpportunity.CityName != cityOpportunityList[i].CityName);
+        ListManager.refreshCityOpportunityTable();
+        }
+        return;
+
+      } );
+
+      cell.appendChild(cellButtonDelete);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      let cellEditButton = document.createElement("button");
+      cellEditButton.innerHTML = "Düzenle";
+      cellEditButton.addEventListener("click", function() {
+       // TableManager.userEditTable(userList[i]);
+        return;
+        
+      });
+      cell.appendChild(cellEditButton);
+      row.appendChild(cell);
+       t1body.appendChild(row);
+
+     }
+     table.appendChild(t1body);
+     cityOpportunityTable.appendChild(table);
+
+  }
+  static refreshCityOpportunityTable() {
+    let element = document.getElementById("cityOpportunityTableReferedId");
+    element.parentNode.removeChild(element);
+    ListManager.createCityOpportunityList(DataStorage.cities);
+  }
+  
+  static removeLast() {
  // DataStorage.applicants.pop();
   DataStorage.applicants.splice(-1,1)
 }

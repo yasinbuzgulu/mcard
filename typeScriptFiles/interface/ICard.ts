@@ -5,6 +5,5 @@ export interface ICard {
   CardIdentitty : number;
   CardPrice : number;
   CardExpiryDate : Date;
-  CardDiscountAmount: DiscountAmount;
   
 }

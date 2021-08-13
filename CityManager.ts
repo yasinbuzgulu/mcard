@@ -10,11 +10,9 @@ export class CityManager {
     let perYearPrice = <HTMLInputElement>(document.getElementById("perYearPriceAttatch"));
     let topLimitYearValue = <HTMLInputElement>(document.getElementById("topLimitYearValueAttach"));
 
-    let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value))
-    DataStorage.cities.push(newCityAndOpportunity)
-    
-    console.log(newCityAndOpportunity);
+    let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value));    
     DataStorage.cities.push(newCityAndOpportunity);
-    ListManager.updateCityOpportunityList();
+    ListManager.updateCityOpportunitySelectionList();
+
   }
 }
