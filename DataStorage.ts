@@ -70,9 +70,25 @@ static createCityList() {
         PerYearPrice: 300,
         TopLimitYearValue: 4
       });
+
+      const newCities = [
+        {
+          CityName: "İzmir",
+          opportuniyList: [
+            {
+              OpportunityName: "Kütüphane",
+              PerYearPrice: 300,
+              TopLimitYearValue: 4
+            }
+          ]
+        }
+      ]
+
+
     return this.cities;
   }
 
+  
 
   static createApplicantlist() {
     this.applicants.push(

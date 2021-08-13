@@ -24,30 +24,33 @@ let cityList = DataStorage.createCityList();
 let applicantList = DataStorage.createApplicantlist();
 
 const saveNewUser: HTMLElement = document.getElementById("newUserSavingButton");
-saveNewUser.onclick = function() {
+const userForm : HTMLFormElement = document.getElementById("userForm") as HTMLFormElement;
+saveNewUser.onclick = function() {    
+  if(userForm.reportValidity())
     ApplicantManager.createApplicantObject();
-    
+  
 };
 
 const listUsers: HTMLElement = document.getElementById("listUserButton");
-listUsers.onclick = function() {
+listUsers.onclick = function() { 
   let myUserTableList = document.getElementById("userListSection");
- 
   userTableSection.style.display = "inline";
   cityOpportunityListSection.style.display = "none";
   cardListSection.style.display = "none";
   ListManager.createUserList(DataStorage.applicants);
-}
+  }
+
 
 const saveNewCityOpportunity: HTMLElement = document.getElementById("newCityAndOpportunitySavingButton");
-    saveNewCityOpportunity.onclick = function() {
-    CityManager.createCityObject();
+const cityForm : HTMLFormElement = document.getElementById("cityForm") as HTMLFormElement;
+saveNewCityOpportunity.onclick = function() { 
+      if(cityForm.reportValidity())
+      CityManager.createCityObject();
 }
 
 const listCitiesOpportunities: HTMLElement = document.getElementById("listCityOpportunityButton");
 listCitiesOpportunities.onclick = function() {
   let myCityOpportunityTableList = document.getElementById("cityOpportunityListSection");
- 
   userTableSection.style.display = "none";
   cityOpportunityListSection.style.display = "inline";
   cardListSection.style.display = "none";
@@ -59,10 +62,15 @@ saveNewCard.onclick = function() {
     CardManager.createCardObject();
 }
 
+/**
+ * Kart kaydındaki Select box ların oluşturulduğu alan  
+ */
 let myUserSelectBox = document.getElementById("userField");
 ListManager.createUserSelectList(myUserSelectBox);  
 
 let myCityOpportunitySelectBox = document.getElementById("cityOpportunityField");
 ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);  
 
+let myCitySelectBox = document.getElementById("checkBoxList");
+ListManager.createCitySelectList(myCitySelectBox,"İstanbul");  
 

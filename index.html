@@ -106,7 +106,7 @@
 	</select>
 </div>
 <input id="newUserSavingButton" type="reset"   value="Kaydet" value="Reset">
-<a1 id="listUserButton" href="#userListSection" type="submit"> Listele </a1>
+<a class="button" id="listUserButton" href="#userListSection" type="submit"> Listele </a>
 </div>
 </div>
 </form>
@@ -119,7 +119,7 @@
 <section id = "cityPage">
 
 <div class="container-cityPage">
-	<form action="">
+	<form id="cityForm" action="">
 	<h5 class="title">Yeni Şehir & Olanak Kaydı</h5>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined" id="cityLabel">
@@ -147,7 +147,7 @@
 		</div>
 		<input id="newCityAndOpportunitySavingButton" type="reset" value="Kaydet" value="Reset">
 			
-<a1 id="listCityOpportunityButton" href="#cityOpportunityListSection" type="submit"> Listele </a1>
+<a class="button" id="listCityOpportunityButton" href="#cityOpportunityListSection" type="submit"> Listele </a>
 </form>
 </div>
 <br>
@@ -169,10 +169,18 @@
 				  <span class="omrs-input-label">Şehir-Olanak Seçimi:</span>
 				</label>
 			</div>
-
-			<a1 id="newCardSavingButton" type="submit">Başvur</a1>
-			
-			<a1 id="listCardButton" href="#cardListSection" type="submit"> Listele </a1>
+			<div class="omrs-input-group" id="cityField">
+						<div class="omrs-input-group" id="checkBoxList">
+						</div>
+		</div>
+			<div class="omrs-input-group">
+			<label class="omrs-input-underlined">
+				<input id="cardPriceAttach" type="number" required>
+				<span class="omrs-input-label">Kart Ücreti</span>	
+			</label>
+		</div>
+			<input id="newCardSavingButton" type="reset" value="Başvur" value="Reset">
+			<a class="button" id="listCardButton" href="#cardListSection" type="submit"> Listele </a>
 	</div>
 </div>
 <br>
@@ -184,10 +192,8 @@
 					<h3>Kayıtlı Kullanıcı Tablosu</h3>
 				</header>
 				<div class="content">
-				<select name="" id="userSelectId">
 					<div class="table-wrapper" id="userTableId">
 					</div>
-				</select>
 					<ul class="actions fit ">
 					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
 					</li>

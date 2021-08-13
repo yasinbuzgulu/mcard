@@ -13,6 +13,7 @@ export class CityManager {
     let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value));    
     DataStorage.cities.push(newCityAndOpportunity);
     ListManager.updateCityOpportunitySelectionList();
+    ListManager.updateCitySelectionList();
 
   }
 }

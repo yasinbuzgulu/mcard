@@ -14,7 +14,7 @@ export class ListManager {
 
     for (let i = 0; i < DataStorage.applicants.length; i++) {
       let option = document.createElement("option");
-      option.value = i.toString();
+      option.value = DataStorage.applicants[i].ApplicantID.toString();
       option.text = DataStorage.applicants[i].ApplicantName +" "+ DataStorage.applicants[i].ApplicantID;
       selectList.appendChild(option);
     }
@@ -26,28 +26,73 @@ export class ListManager {
   }
 
   static createCityOpportunitySelectList(myCityOpportunity) {
-    let selectList = document.createElement("select");
-    selectList.id = "myCityOpportunitySelect";
-    selectList.innerHTML = `<option value="none" selected disabled hidden required> 
-          Lütfen Şehir-Olanak Seçiniz`;
-          myCityOpportunity.appendChild(selectList);
 
+   let selectListCity = document.createElement("select");
+   selectListCity.id = "myCityOpportunitySelect";
+   selectListCity.innerHTML = `<option value="none" selected disabled hidden required>Lütfen Şehir-Olanak Seçiniz`;
+   selectListCity.onchange = function(evt){
+    var value = evt.target.value;
+    console.log(evt.target);
+    ListManager.createCitySelectList(myCityOpportunity,value);
+ };
+   myCityOpportunity.appendChild(selectListCity);
+
+ 
     for (let i = 0; i < DataStorage.cities.length; i++) {
       let option = document.createElement("option");
-      option.value = i.toString();
-      option.text = DataStorage.cities[i].CityName +" "+ DataStorage.cities[i].OpportunityName;
-      selectList.appendChild(option);
+      option.value = DataStorage.cities[i].CityName;
+      option.text = DataStorage.cities[i].CityName ;
+      selectListCity.appendChild(option);
     }
   }
+
+  static createCitySelectList(citiesName) {
+   const checkBoxList = document.getElementById("checkBoxList");
+   checkBoxList.innerHTML = "";
+
+     const myCityOpportunitySelect : HTMLInputElement  = document.getElementById("myCityOpportunitySelect") as HTMLInputElement;
+     var selectedCitiesName = myCityOpportunitySelect.options[myCityOpportunitySelect.selectedIndex].value; 
+     console.log(selectedCitiesName);
+    const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
+    console.log(citiesList);
+
+
+    for (let i = 0; i < citiesList.length; i++) {
+      //document.getElementById("checkBoxList").innerHTML = "";
+
+      let selectListCity = document.createElement("input");
+      selectListCity.type = "checkbox";
+      selectListCity.id = "inputSelectOpportunity" + i.toString();
+      selectListCity.name = "selectOpportunity";
+      selectListCity.value = i.toString();
+
+      var label = document.createElement('label');
+      label.htmlFor = "inputSelectOpportunity" + i.toString();
+      label.appendChild(document.createTextNode(citiesList[i].OpportunityName));
+
+     
+      checkBoxList.appendChild(selectListCity);
+      checkBoxList.appendChild(label);
+
+    }
+
+  }
+
   static updateCityOpportunitySelectionList() {
     let myCityOpportunitySelectBox = document.getElementById("cityOpportunityField");
     myCityOpportunitySelectBox.innerHTML = '';
     ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
   }
+  static updateCitySelectionList() {
+    let myCityOpportunitySelectBox = document.getElementById("checkBoxList");
+    myCityOpportunitySelectBox.innerHTML = '';
+    ListManager.createCitySelectList(myCityOpportunitySelectBox);
+  }
+
 
   static createUserList(userList) {
-
     let userTable = document.getElementById("userTableId");
+    userTable.innerHTML = "";
     let table = document.createElement("table");
     let t1body = document.createElement("tbody");
     table.id = "userTableReferedId";
@@ -129,15 +174,15 @@ export class ListManager {
      userTable.appendChild(table);
 
   }
-
   static refreshUserTable() {
     let element = document.getElementById("userTableReferedId");
+    element.innerHTML = "";
     element.parentNode.removeChild(element);
     ListManager.createUserList(DataStorage.applicants);
   }
   static createCityOpportunityList(cityOpportunityList) {
-
     let cityOpportunityTable = document.getElementById("cityOpportunityTableId");
+    cityOpportunityList.innerHTML = '';
     let table = document.createElement("table");
     let t1body = document.createElement("tbody");
     table.id = "cityOpportunityTableReferedId";
