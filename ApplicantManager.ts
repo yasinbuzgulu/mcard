@@ -13,6 +13,9 @@ export class ApplicantManager {
     let applicantSurname =<HTMLInputElement>document.getElementById("applicantSurnameAttach");
    // Verifications.checkText(applicantSurname);
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
+    const date =new Date().toLocaleString()
+    
+// "11/10/2016, 11:49:36 AM"
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
     //Verifications.checkID(applicantID);
     

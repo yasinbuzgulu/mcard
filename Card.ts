@@ -23,10 +23,11 @@ export class Card implements ICard {
 
 
   }
+  User: Applicant;
+  CityOpportunity: City;
   CardIdentitty: number;
   CardPrice: number;
   CardExpiryDate: Date;
-  CardDiscountAmount: DiscountAmount;
 
 
   get Identity() {

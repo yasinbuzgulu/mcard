@@ -71,20 +71,6 @@ static createCityList() {
         TopLimitYearValue: 4
       });
 
-      const newCities = [
-        {
-          CityName: "İzmir",
-          opportuniyList: [
-            {
-              OpportunityName: "Kütüphane",
-              PerYearPrice: 300,
-              TopLimitYearValue: 4
-            }
-          ]
-        }
-      ]
-
-
     return this.cities;
   }
 
@@ -97,8 +83,8 @@ static createCityList() {
         ApplicantSurname: "Büzgülü",
         ApplicantBirthDate: new Date (1478708162000),
         ApplicantID: 53452312702,
-        ApplicantTypeBasedOnAge: CitizenType.NORMAL,
-        ApplicantTypeBasedOnEducation: ApplicantType.STUDENT 
+        ApplicantTypeBasedOnAge: "Normal",
+        ApplicantTypeBasedOnEducation:  "Öğrenci"
       });
       return this.applicants;
   }

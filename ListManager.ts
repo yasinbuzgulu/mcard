@@ -46,7 +46,7 @@ export class ListManager {
     }
   }
 
-  static createCitySelectList(citiesName) {
+  static createCitySelectList(myCitySelectBox,citiesName) {
    const checkBoxList = document.getElementById("checkBoxList");
    checkBoxList.innerHTML = "";
 
@@ -54,7 +54,6 @@ export class ListManager {
      var selectedCitiesName = myCityOpportunitySelect.options[myCityOpportunitySelect.selectedIndex].value; 
      console.log(selectedCitiesName);
     const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
-    console.log(citiesList);
 
 
     for (let i = 0; i < citiesList.length; i++) {
