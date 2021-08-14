@@ -161,6 +161,7 @@ export class ListManager {
 
       cell = document.createElement("td");
       let cellEditButton = document.createElement("button");
+     // cellEditButton.setAttribute("href", "mainPage");
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
        // TableManager.userEditTable(userList[i]);
