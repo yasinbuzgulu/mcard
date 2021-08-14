@@ -69,7 +69,7 @@
 	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
 		<div class="omrs-input-group" >
 			<label for="applicantNameAttach" class="omrs-input-underlined">
-				<input minlength="2" maxlength="25"  id="applicantNameAttach" name="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
+				<input  pattern="[A-Za-z]+"oninvalid="setCustomValidity('Please enter on alphabets only. ')" minlength="2" maxlength="25"  id="applicantNameAttach" name="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
@@ -84,7 +84,7 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantIDAttach"  type="number" maxlength="11" minlength="11" placeholder="Kimlik Numaranızı Giriniz" required>
+				<input maxlength="11"  id="applicantIDAttach" type="number"  placeholder="Kimlik Numaranızı Giriniz" required>
 			</label>
 		</div>
 		<div id="selectCitizenType" class="citizenField" >
@@ -212,6 +212,7 @@
 					</div>
 					<ul class="actions fit ">
 					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
+					<a href="#applicantPage" id="newUserButton" class="button">Yeni Kullanıcı Kaydet</a>
 
 					</li>
 				</ul>

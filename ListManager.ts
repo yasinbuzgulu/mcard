@@ -148,10 +148,13 @@ export class ListManager {
         let confirmDelete = confirm ("Kullanıcıyı silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
         if (confirmDelete) {DataStorage.applicants = DataStorage.applicants.filter (applicant => applicant.ApplicantName != userList[i].ApplicantName);
         ListManager.refreshUserTable();
+        ListManager.updateUserSelectionList();
+
         }
         return;
 
-      } );
+      } 
+      );
 
       cell.appendChild(cellButtonDelete);
       row.appendChild(cell);
@@ -224,8 +227,10 @@ export class ListManager {
 
       cellButtonDelete.addEventListener("click", function () {
         let confirmDelete = confirm ("Şehir - Olanak bilgisini silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
-        if (confirmDelete) {DataStorage.cities = DataStorage.cities.filter (cityOpportunity => cityOpportunity.CityName != cityOpportunityList[i].CityName);
+        if (confirmDelete) {DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (cityOpportunityList[i].CityName+cityOpportunityList[i].OpportunityName));
         ListManager.refreshCityOpportunityTable();
+        ListManager.updateCityOpportunitySelectionList();
+        ListManager.updateCitySelectionList();
         }
         return;
 

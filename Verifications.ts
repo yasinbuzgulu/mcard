@@ -5,7 +5,7 @@ export class Verifications {
 
   static checkText(text) {
     let onlyLetter = /^[a-zA-Z]+$/.test(text);
-    if(onlyLetter!= text) alert("Yanlış Girdiniz!(sadece harf içermeli)")
+    if(onlyLetter== text) document.getElementById("applicantNameAttach").innerHTML ="&#9989;"
   }
 
   static checkID(value) {
