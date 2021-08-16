@@ -13,10 +13,9 @@ export class ApplicantManager {
     let applicantSurname =<HTMLInputElement>document.getElementById("applicantSurnameAttach");
    // Verifications.checkText(applicantSurname);
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
-    let date =new Date();
-    let dateInput1 = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-    let dateInput = dateInput1;
-
+    const date =new Date();
+    var myDate = document.querySelector("applicantBirthDateAttach");
+    
 
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
     //Verifications.checkID(applicantID);
@@ -40,7 +39,7 @@ export class ApplicantManager {
       case "2": {  typeOfApplicantBasedOnEducation = "--";  }
     }
 
-    let newApplicant = new Applicant(applicantName.value, applicantSurname.value, new Date(dateInput), Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
+    let newApplicant = new Applicant(applicantName.value, applicantSurname.value, new Date(applicantBirthDate.value), Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
 
     console.log(newApplicant);
     DataStorage.applicants.push(newApplicant);

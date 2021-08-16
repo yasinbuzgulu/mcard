@@ -146,7 +146,8 @@ export class ListManager {
 
       cellButtonDelete.addEventListener("click", function () {
         let confirmDelete = confirm ("Kullanıcıyı silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
-        if (confirmDelete) {DataStorage.applicants = DataStorage.applicants.filter (applicant => applicant.ApplicantName != userList[i].ApplicantName);
+        if (confirmDelete) {
+        DataStorage.applicants = DataStorage.applicants.filter (applicant => applicant.ApplicantName != userList[i].ApplicantName);
         ListManager.refreshUserTable();
         ListManager.updateUserSelectionList();
 
@@ -165,19 +166,8 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#applicantPage';
-        let applicantNameEdit = <HTMLInputElement>(  document.getElementById("applicantNameAttach")  );
-        applicantNameEdit.defaultValue = DataStorage.applicants[i].ApplicantName.toString();
-        let applicantSurnameEdit = <HTMLInputElement>(  document.getElementById("applicantSurnameAttach")  );
-        applicantSurnameEdit.defaultValue = DataStorage.applicants[i].ApplicantSurname.toString(); 
-        let applicantSBirthDateEdit = <HTMLInputElement>(  document.getElementById("applicantBirthDateAttach")  );
-        applicantSBirthDateEdit.defaultValue = DataStorage.applicants[i].ApplicantBirthDate.toLocaleDateString(); 
-        let applicantIdEdit = <HTMLInputElement>(  document.getElementById("applicantIDAttach")  );
-        applicantIdEdit.defaultValue = DataStorage.applicants[i].ApplicantID.toString(); 
-        let applicantCitizenType = <HTMLInputElement>(  document.getElementById("citizenTypeSelection")  );
-        applicantCitizenType.defaultValue = DataStorage.applicants[i].ApplicantTypeBasedOnAge.toString(); 
-        let applicantApplicantType = <HTMLInputElement>(  document.getElementById("applicatTypeSelection")  );
-        applicantApplicantType.defaultValue = DataStorage.applicants[i].ApplicantTypeBasedOnEducation.toString(); 
-       // TableManager.userEditTable(userList[i]);
+        
+        TableManager.userEditTable(userList, i);
         return;
         
       });

@@ -27,9 +27,8 @@ const saveNewUser: HTMLElement = document.getElementById("newUserSavingButton");
 const userForm : HTMLFormElement = document.getElementById("userForm") as HTMLFormElement;
 saveNewUser.onclick = function() {    
   if(userForm.reportValidity()){
-
     ApplicantManager.createApplicantObject();
-
+    alert("Kullanıcı başarılı bir şekilde listeye eklendi.");
 }};
 
 const listUsers: HTMLElement = document.getElementById("listUserButton");
@@ -40,7 +39,6 @@ listUsers.onclick = function() {
   cardListSection.style.display = "none";
   ListManager.createUserList(DataStorage.applicants);
   }
-
 
 const saveNewCityOpportunity: HTMLElement = document.getElementById("newCityAndOpportunitySavingButton");
 const cityForm : HTMLFormElement = document.getElementById("cityForm") as HTMLFormElement;
