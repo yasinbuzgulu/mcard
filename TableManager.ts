@@ -26,6 +26,19 @@ static userEditTable (userList, i) {
         ListManager.refreshUserTable();
 }
 
+static cityEditTable (cityList, i) {
+        let cityNameEdit = <HTMLInputElement>(  document.getElementById("cityNameAttach")  );
+        cityNameEdit.defaultValue = DataStorage.cities[i].CityName.toString();
+        let opportunityNameEdit = <HTMLInputElement>(  document.getElementById("opportunityNameAttach")  );
+        opportunityNameEdit.defaultValue = DataStorage.cities[i].OpportunityName.toString(); 
+        let perYearPriceEdit = <HTMLInputElement>(  document.getElementById("perYearPriceAttatch")  );
+        perYearPriceEdit.value = DataStorage.cities[i].PerYearPrice.toString(); 
+        let topLimitYearValueEdit = <HTMLInputElement>(  document.getElementById("topLimitYearValueAttach")  );
+        topLimitYearValueEdit.defaultValue = DataStorage.cities[i].TopLimitYearValue.toString(); 
+        
+        DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (cityList[i].CityName+cityList[i].OpportunityName));
+        ListManager.refreshCityOpportunityTable();
+}
 
 
 }

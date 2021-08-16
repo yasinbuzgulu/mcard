@@ -16,14 +16,10 @@ export class ApplicantManager {
     const date =new Date();
     var myDate = document.querySelector("applicantBirthDateAttach");
     
-
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
     //Verifications.checkID(applicantID);
     
-
     const  selectedTypeOfApplicantBasedOnAgeInput = <HTMLInputElement>(document.getElementById("citizenTypeSelection"));
-    console.log(selectedTypeOfApplicantBasedOnAgeInput);
-    console.log(selectedTypeOfApplicantBasedOnAgeInput.value);
     let typeOfApplicantBasedOnAge;
     switch (Number(selectedTypeOfApplicantBasedOnAgeInput.value)) {
       case 0 : {   typeOfApplicantBasedOnAge = "Çocuk"; break;  }
@@ -41,7 +37,6 @@ export class ApplicantManager {
 
     let newApplicant = new Applicant(applicantName.value, applicantSurname.value, new Date(applicantBirthDate.value), Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
 
-    console.log(newApplicant);
     DataStorage.applicants.push(newApplicant);
     ListManager.updateUserSelectionList();
   

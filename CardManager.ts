@@ -17,17 +17,21 @@ export class CardManager {
     
    // let applicant : Array <string | string | number>;
     const userSelector :HTMLElement = document.getElementById("myUserSelect");
-    var selectedUserID = userSelector.options[userSelector.selectedIndex].value;
+    let selectedUserID = userSelector.options[userSelector.selectedIndex].value;
     let resultUser = DataStorage.applicants.filter(item => item.ApplicantID == selectedUserID);
 
-    
     const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
-    var selectedCityName = citySelector.options[citySelector.selectedIndex].value;
+    let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
     let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
 
     let myApplicant = resultUser[0].ApplicantName + resultUser[0].ApplicantSurname + resultUser[0].ApplicantID ;
     let myCityOpportunity = resultCity[0].CityName;
-   // let newCard = Card (Number(cardIdendity.)
+
+    const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
+    
+
+
+    // let newCard = Card (Number(cardIdendity.)
     /*
     let element = <any> document.getElementsByName("inputSelectOpportunity0");  
     if (element.checked) {  }

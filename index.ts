@@ -19,7 +19,6 @@ cityOpportunityListSection.style.display = "none";
 const cardListSection: HTMLElement = document.getElementById("cardListSection");
 cardListSection.style.display = "none";
 
-
 let cityList = DataStorage.createCityList();
 let applicantList = DataStorage.createApplicantlist();
 
@@ -43,8 +42,11 @@ listUsers.onclick = function() {
 const saveNewCityOpportunity: HTMLElement = document.getElementById("newCityAndOpportunitySavingButton");
 const cityForm : HTMLFormElement = document.getElementById("cityForm") as HTMLFormElement;
 saveNewCityOpportunity.onclick = function() { 
-      if(cityForm.reportValidity())
+      if(cityForm.reportValidity()){
       CityManager.createCityObject();
+      alert("Şehir-Olanak başarılı bir şekilde listeye eklendi.");
+
+      }
 }
 
 const listCitiesOpportunities: HTMLElement = document.getElementById("listCityOpportunityButton");
@@ -72,4 +74,3 @@ ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
 
 let myCitySelectBox = document.getElementById("checkBoxList");
 ListManager.createCitySelectList(myCitySelectBox,"İstanbul");  
-

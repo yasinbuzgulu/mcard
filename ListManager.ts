@@ -8,9 +8,8 @@ export class ListManager {
   static createUserSelectList(myUser) {
     let selectList = document.createElement("select");
     selectList.id = "myUserSelect";
-    selectList.innerHTML = `<option value="none" selected disabled hidden required> 
-          Lütfen Kullanıcı Seçiniz`;
-          myUser.appendChild(selectList);
+    selectList.innerHTML = `<option value="none" selected disabled hidden required> Lütfen Kullanıcı Seçiniz`;
+    myUser.appendChild(selectList);
 
     for (let i = 0; i < DataStorage.applicants.length; i++) {
       let option = document.createElement("option");
@@ -46,7 +45,7 @@ export class ListManager {
     }
   }
 
-  static createCitySelectList(myCitySelectBox,citiesName) {
+  static createCitySelectList(myCitySelectBox,citiesName?) {
    const checkBoxList = document.getElementById("checkBoxList");
    checkBoxList.innerHTML = "";
 
@@ -147,13 +146,11 @@ export class ListManager {
       cellButtonDelete.addEventListener("click", function () {
         let confirmDelete = confirm ("Kullanıcıyı silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
         if (confirmDelete) {
-        DataStorage.applicants = DataStorage.applicants.filter (applicant => applicant.ApplicantName != userList[i].ApplicantName);
+        DataStorage.applicants = DataStorage.applicants.filter (applicant => (applicant.ApplicantName+applicant.ApplicantID) != (userList[i].ApplicantName+userList[i].ApplicantID));
         ListManager.refreshUserTable();
         ListManager.updateUserSelectionList();
-
         }
         return;
-
       } 
       );
 
@@ -165,15 +162,14 @@ export class ListManager {
      // cellEditButton.setAttribute("href", "mainPage");
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
-        window.location.href = '#applicantPage';
-        
-        TableManager.userEditTable(userList, i);
+      window.location.href = '#applicantPage';
+      TableManager.userEditTable(userList, i);
         return;
         
       });
       cell.appendChild(cellEditButton);
       row.appendChild(cell);
-       t1body.appendChild(row);
+      t1body.appendChild(row);
 
      }
      table.appendChild(t1body);
@@ -188,7 +184,7 @@ export class ListManager {
   }
   static createCityOpportunityList(cityOpportunityList) {
     let cityOpportunityTable = document.getElementById("cityOpportunityTableId");
-    cityOpportunityList.innerHTML = '';
+    cityOpportunityTable.innerHTML = '';
     let table = document.createElement("table");
     let t1body = document.createElement("tbody");
     table.id = "cityOpportunityTableReferedId";
@@ -231,7 +227,8 @@ export class ListManager {
 
       cellButtonDelete.addEventListener("click", function () {
         let confirmDelete = confirm ("Şehir - Olanak bilgisini silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
-        if (confirmDelete) {DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (cityOpportunityList[i].CityName+cityOpportunityList[i].OpportunityName));
+        if (confirmDelete) {
+        DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (cityOpportunityList[i].CityName+cityOpportunityList[i].OpportunityName));
         ListManager.refreshCityOpportunityTable();
         ListManager.updateCityOpportunitySelectionList();
         ListManager.updateCitySelectionList();
@@ -248,7 +245,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#cityPage';
-       // TableManager.userEditTable(userList[i]);
+        TableManager.cityEditTable(cityOpportunityList,i);
         return;
         
       });
@@ -263,6 +260,7 @@ export class ListManager {
   }
   static refreshCityOpportunityTable() {
     let element = document.getElementById("cityOpportunityTableReferedId");
+    element.innerHTML = "";
     element.parentNode.removeChild(element);
     ListManager.createCityOpportunityList(DataStorage.cities);
   }
