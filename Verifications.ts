@@ -38,11 +38,16 @@ export class Verifications {
 
         //çıkan sonucu 7 ile çarpıp, çift hanelerin toplamanı çıkartıp mod 10'nuna bakıyoruz. 10. hanedeki rakama eşit mi diye.
         //bütün kuralların uyup uymadığını geri döndürüyoruz
-  if( ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0)) alert("Kimlik Numarasını Yanlış Girdiniz!")
+     if( ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0)) alert("Kimlik Numarasını Yanlış Girdiniz!")
 
   }
 
-
+  static checkDate(testDate) {
+    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    if (!(date_regex.test(testDate))) {
+      return false;
+  }
+  }
 
 
 
