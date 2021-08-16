@@ -61,10 +61,23 @@ listCitiesOpportunities.onclick = function() {
 }
 
 const saveNewCard: HTMLElement = document.getElementById("newCardSavingButton");
+const cardForm : HTMLFormElement = document.getElementById("cardForm") as HTMLFormElement;
 saveNewCard.onclick = function() {
+  if(cardForm.reportValidity()) {
     CardManager.createCardObject();
+    alert("Kart başarılı bir şekilde listeye eklendi.");
+
+}
 }
 
+const listCards: HTMLElement = document.getElementById("listCardButton");
+listCards.onclick = function() {
+  let myCityOpportunityTableList = document.getElementById("cardListSection");
+  userTableSection.style.display = "none";
+  cityOpportunityListSection.style.display = "none";
+  cardListSection.style.display = "inline";
+  ListManager.createCardList(DataStorage.cards);
+}
 /**
  * Kart kaydındaki Select box ların oluşturulduğu alan  
  */
@@ -77,15 +90,3 @@ ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
 let myCitySelectBox = document.getElementById("checkBoxList");
 ListManager.createCitySelectList(myCitySelectBox,"İstanbul");  
 
-
-function validateHhMm(inputField) {
-  var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
-
-  if (isValid) {
-    inputField.style.backgroundColor = '#bfa';
-  } else {
-    inputField.style.backgroundColor = '#fba';
-  }
-
-  return isValid;
-}

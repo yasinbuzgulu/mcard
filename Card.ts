@@ -10,11 +10,11 @@ import { ICard } from "./typeScriptFiles/interface/ICard";
 export class Card implements ICard {
   private _identity: number;
   private _price: number;
-  private _expiryDate: Date;
+  private _expiryDate: string;
   private city:City ;
   private applicant:Applicant;
 
-  constructor(identity: number, price:number, expiryDate: Date, applicant:Applicant, city:City ){
+  constructor(identity: number, price:number, expiryDate: string, applicant:Applicant, city:City ){
     this._identity = identity;
     this._price = price;
     this._expiryDate = expiryDate;

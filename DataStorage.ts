@@ -32,41 +32,41 @@ static listCards() {
 static createCityList() {
   this.cities.push(
       {
-        CityName: "İstanbul",
+        CityName: "Istanbul",
         OpportunityName: "Otopark",
         PerYearPrice: 225,
         TopLimitYearValue: 1
       },
       {
-        CityName: "İstanbul",
-        OpportunityName: "Kütüphane",
+        CityName: "Istanbul",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 400,
         TopLimitYearValue: 3
       },
       {
-        CityName: "İstanbul",
+        CityName: "Istanbul",
         OpportunityName: "Tiyatro",
         PerYearPrice: 400,
         TopLimitYearValue: 3
       },
       {
         CityName: "Ankara",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 300,
         TopLimitYearValue: 4
       },  {
         CityName: "Bursa",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 250,
         TopLimitYearValue: 5
       },  {
         CityName: "Adana",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 200,
         TopLimitYearValue: 5
       },  {
-        CityName: "İzmir",
-        OpportunityName: "Kütüphane",
+        CityName: "Izmir",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 300,
         TopLimitYearValue: 4
       });
@@ -81,7 +81,7 @@ static createCityList() {
       {
         ApplicantName :"Yasin",
         ApplicantSurname: "Büzgülü",
-        ApplicantBirthDate: new Date (1478708162000),
+        ApplicantBirthDate: "05/09/1997",
         ApplicantID: 53452312702,
         ApplicantTypeBasedOnAge: "Normal",
         ApplicantTypeBasedOnEducation:  "Öğrenci"

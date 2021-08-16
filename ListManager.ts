@@ -3,7 +3,7 @@ import { TableManager } from './TableManager';
 import { DiscountAmount } from './typeScriptFiles/enum/types';
 
 export class ListManager {
-
+  
 
   static createUserSelectList(myUser) {
     let selectList = document.createElement("select");
@@ -62,7 +62,7 @@ export class ListManager {
       selectListCity.type = "checkbox";
       selectListCity.id = "inputSelectOpportunity" + i.toString();
       selectListCity.name = "selectOpportunity";
-      selectListCity.value = i.toString();
+      selectListCity.value = citiesList[i].OpportunityName.toString();
 
       var label = document.createElement('label');
       label.htmlFor = "inputSelectOpportunity" + i.toString();
@@ -264,6 +264,8 @@ export class ListManager {
     element.parentNode.removeChild(element);
     ListManager.createCityOpportunityList(DataStorage.cities);
   }
+  
+
   
   static removeLast() {
  // DataStorage.applicants.pop();

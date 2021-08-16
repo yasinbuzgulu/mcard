@@ -1,3 +1,4 @@
+import { Applicant } from './Applicant';
 import { Card } from './Card';
 import { DataStorage } from './DataStorage';
 import { DiscountAmount } from './typeScriptFiles/enum/types';
@@ -24,27 +25,22 @@ export class CardManager {
     let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
     let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
 
-    let myApplicant = resultUser[0].ApplicantName + resultUser[0].ApplicantSurname + resultUser[0].ApplicantID ;
+    let myApplicant = resultUser[0].ApplicantName + " "+ resultUser[0].ApplicantSurname + " "+ resultUser[0].ApplicantID ;
     let myCityOpportunity = resultCity[0].CityName;
 
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
     var inputElems = document.getElementsByTagName("input"),
     count = 0;
-
+    let checkedOpportunity:string[]; 
     for (var i=0; i<inputElems.length; i++) {       
        if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
-          count++;
-          switch(i){
-          case 0: console.log("Otopark");
-          case 1:console.log("Kütüphane");
-          case 2:console.log("Tiyatro");
-        };
+
+        let temp = inputElems[i];
         }
     }
-    alert(count);
-
-
-    // let newCard = Card (Number(cardIdendity.)
+    let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, myApplicant,(myCityOpportunity) ); 
+    DataStorage.cards.push(newCard);
+    console.log(DataStorage.cards[0]);
     /*
     let element = <any> document.getElementsByName("inputSelectOpportunity0");  
     if (element.checked) {  }
