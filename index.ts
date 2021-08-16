@@ -29,8 +29,7 @@ saveNewUser.onclick = function() {
   if(userForm.reportValidity()){
 
     ApplicantManager.createApplicantObject();
-    let preschoolEditPriceInput = <HTMLInputElement>(  document.getElementById("applicantNameAttach")  );
-    preschoolEditPriceInput.defaultValue = DataStorage.applicants[0].ApplicantName.toString();
+
 }};
 
 const listUsers: HTMLElement = document.getElementById("listUserButton");
