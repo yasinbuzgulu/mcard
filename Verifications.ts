@@ -5,7 +5,10 @@ export class Verifications {
 
   static checkText(text) {
     let onlyLetter = /^[a-zA-Z]+$/.test(text);
-    if(onlyLetter== text) document.getElementById("applicantNameAttach").innerHTML ="&#9989;"
+    if(onlyLetter== text) {
+        document.getElementById("applicantNameAttach").innerHTML = "Yanlış Girdiniz";
+    }
+
   }
 
   static checkID(value) {
@@ -42,11 +45,15 @@ export class Verifications {
 
   }
 
-  static checkDate(testDate) {
-    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-    if (!(date_regex.test(testDate))) {
-      return false;
-  }
+  static checkDate(inputDate) {
+    var regex=new RegExp("([0-9]{4}[-](0[1-9]|1[0-2])[-]([0-2]{1}[0-9]{1}|3[0-1]{1})|([0-2]{1}[0-9]{1}|3[0-1]{1})[-](0[1-9]|1[0-2])[-][0-9]{4})");
+    var dateOk=regex.test(inputDate);
+    if(dateOk){
+        alert("Ok");
+    }else{
+        alert("not Ok");
+        return false;
+    }
   }
 
 

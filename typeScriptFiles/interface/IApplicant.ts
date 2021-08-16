@@ -7,7 +7,7 @@ export interface IApplicant {
 
   ApplicantName : string;
   ApplicantSurname : string;
-  ApplicantBirthDate : Date;
+  ApplicantBirthDate : string;
   ApplicantID : number;
   ApplicantTypeBasedOnAge : string;
   ApplicantTypeBasedOnEducation : string;
