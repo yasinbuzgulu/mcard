@@ -28,7 +28,20 @@ export class CardManager {
     let myCityOpportunity = resultCity[0].CityName;
 
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
-    
+    var inputElems = document.getElementsByTagName("input"),
+    count = 0;
+
+    for (var i=0; i<inputElems.length; i++) {       
+       if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+          count++;
+          switch(i){
+          case 0: console.log("Otopark");
+          case 1:console.log("Kütüphane");
+          case 2:console.log("Tiyatro");
+        };
+        }
+    }
+    alert(count);
 
 
     // let newCard = Card (Number(cardIdendity.)

@@ -162,14 +162,14 @@ export class ListManager {
      // cellEditButton.setAttribute("href", "mainPage");
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
-      window.location.href = '#applicantPage';
-      TableManager.userEditTable(userList, i);
+        window.location.href = '#applicantPage';
+        TableManager.userEditTable(userList, i);
         return;
         
       });
       cell.appendChild(cellEditButton);
       row.appendChild(cell);
-      t1body.appendChild(row);
+       t1body.appendChild(row);
 
      }
      table.appendChild(t1body);

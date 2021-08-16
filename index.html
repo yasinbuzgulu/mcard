@@ -69,12 +69,12 @@
 	<h5 class="title">Yeni Kullanıcı Kaydı</h5>
 		<div class="omrs-input-group" >
 			<label for="applicantNameAttach" class="omrs-input-underlined">
-				<input   minlength="2" maxlength="20"  id="applicantNameAttach" name="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
+				<input   minlength="2" maxlength="20"  id="applicantNameAttach" pattern="[A-Za-z]+" name="applicantNameAttach" type="text" placeholder="İsminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input minlength="2" maxlength="20" id="applicantSurnameAttach"  type="text" placeholder="Soyisminizi Giriniz" required>
+				<input minlength="2" maxlength="20" id="applicantSurnameAttach" pattern="[A-Za-z]+" type="text" placeholder="Soyisminizi Giriniz" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
@@ -123,13 +123,13 @@
 	<h5 class="title">Yeni Şehir & Olanak Kaydı</h5>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined" id="cityLabel">
-				<input minlength="2" maxlength="15" id="cityNameAttach" type="text" required>
+				<input minlength="2" maxlength="15" pattern="[A-Za-z]+" id="cityNameAttach" type="text" required>
 				<span class="omrs-input-label">Şehir İsmi</span>
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input  minlength="2" maxlength="25" id="opportunityNameAttach" type="text" required>
+				<input  minlength="2" maxlength="25" pattern="[A-Za-z]+" id="opportunityNameAttach" type="text" required>
 				<span class="omrs-input-label">Olanak İsmi</span>
 			</label>
 		</div>
