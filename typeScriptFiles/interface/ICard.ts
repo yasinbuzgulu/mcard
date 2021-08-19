@@ -7,6 +7,7 @@ export interface ICard {
   CardIdentitty : number;
   CardPrice : number;
   CardExpiryDate : Date;
-  User : Applicant;
-  CityOpportunity : City;
+  User : string;
+  City : string;
+  Opportunity : string;
 }

@@ -29,7 +29,8 @@ saveNewUser.onclick = function() {
     ApplicantManager.createApplicantObject();
     TableManager.resetUserPage();
     alert("Kullanıcı başarılı bir şekilde listeye eklendi.");
-}};
+}
+};
 
 const listUsers: HTMLElement = document.getElementById("listUserButton");
 listUsers.onclick = function() { 
@@ -63,11 +64,9 @@ listCitiesOpportunities.onclick = function() {
 const saveNewCard: HTMLElement = document.getElementById("newCardSavingButton");
 const cardForm : HTMLFormElement = document.getElementById("cardForm") as HTMLFormElement;
 saveNewCard.onclick = function() {
-  if(cardForm.reportValidity()) {
     CardManager.createCardObject();
+    TableManager.resetCardPage();
     alert("Kart başarılı bir şekilde listeye eklendi.");
-
-}
 }
 
 const listCards: HTMLElement = document.getElementById("listCardButton");
@@ -89,4 +88,5 @@ ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
 
 let myCitySelectBox = document.getElementById("checkBoxList");
 ListManager.createCitySelectList(myCitySelectBox,"İstanbul");  
+
 

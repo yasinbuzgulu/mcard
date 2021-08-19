@@ -11,8 +11,10 @@ export class ApplicantManager {
     let applicantName =<HTMLInputElement>document.getElementById("applicantNameAttach");
     let applicantSurname =<HTMLInputElement>document.getElementById("applicantSurnameAttach");
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
+    Verifications.checkDate(applicantBirthDate);
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
-        
+    //Verifications.checkID(applicantID);
+
     const  selectedTypeOfApplicantBasedOnAgeInput = <HTMLInputElement>(document.getElementById("citizenTypeSelection"));
     let typeOfApplicantBasedOnAge;
     switch (Number(selectedTypeOfApplicantBasedOnAgeInput.value)) {
@@ -39,4 +41,3 @@ export class ApplicantManager {
 
 
 }
-

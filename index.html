@@ -85,12 +85,13 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="applicantIDAttach" type="number" maxlength="11" placeholder="Kimlik Numaranızı Giriniz" required>
+				<input id="applicantIDAttach" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+				maxlength="11" ngModel required pattern="\d" placeholder="Kimlik Numaranızı Giriniz" >
 			</label>
 		</div>
 		<div id="selectCitizenType" class="citizenField" >
 		<label for="CitizenType"> Başvuran Tipi (Yaşa Göre): </label>
-	<select required id="citizenTypeSelection" style="width: 350px">
+	<select required [value]="i" id="citizenTypeSelection" *ngFor="let priceRange of priceRangeOptions; let i=index" style="width: 350px">
 	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
 		<option value='0'>Çocuk(0-7)</option>
 		<option value='1'>Normal(8-64)</option>
@@ -99,14 +100,14 @@
 </div>	
 <div>
 <label for="ApplicantType"> Başvuran Tipi (Eğitime Göre): </label>
-<select required id="applicatTypeSelection" style="width: 350px">
+<select id="applicatTypeSelection" style="width: 350px" required>
 	<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
 		<option value='0'>Öğrenci</option>
 		<option value='1'>Sivil</option>
 		<option value='2'>İkisi de değil</option>
 	</select>
 </div>
-<input id="newUserSavingButton" type="reset"  value="Kaydet" value="Reset">
+<input id="newUserSavingButton" type="submit"  value="Kaydet" value="Reset">
 <a class="button" id="listUserButton" href="#userListSection" type="submit"> Listele </a>
 </div>
 </div>
@@ -146,9 +147,9 @@
 				<span class="omrs-input-label">Tanımlanabilen Max. Yıl</span>
 			</label>
 		</div>
-		<input id="newCityAndOpportunitySavingButton" type="reset" value="Kaydet" value="Reset">
-			
+		<input id="newCityAndOpportunitySavingButton" type="submit" value="Kaydet" value="Reset">
 <a class="button" id="listCityOpportunityButton" href="#cityOpportunityListSection" type="submit"> Listele </a>
+
 </form>
 </div>
 <br>
@@ -156,7 +157,7 @@
 </section>
 
 	<section id = "cardPage">
-
+<form action="" id="cardForm">
 	<div class="container-cardPage">
 	<div>
 		<h5 class="title">Yeni Kart Kaydı</h5>
@@ -171,7 +172,7 @@
 				</label>
 			</div>
 			<div class="omrs-input-group" id="cityField">
-						<div class="omrs-input-group" id="checkBoxList">
+						<div id="checkBoxList">
 						</div>
 		</div>
 			<div class="omrs-input-group">
@@ -186,6 +187,7 @@
 </div>
 <br>
 <br>
+</form>
 			</section>
 			<section  id="userListSection">
 			<div class="inner">
@@ -218,7 +220,6 @@
 					<a href="#applicantPage" id="newUserButton" class="button">Yeni Kullanıcı Kaydet</a>
 					<a href="#cityPage" id="newUserButton" class="button">Yeni Şehir-Olanak Kaydet</a>
 
-					</li>
 				</ul>
 				</div>
 			</div>
@@ -234,6 +235,9 @@
 					</div>
 					<ul class="actions fit ">
 					<a href="#topPage" id="mainButton" class="button">Anasayfaya Dön</a>
+					<a href="#applicantPage" id="newUserButton" class="button">Yeni Kullanıcı Kaydet</a>
+					<a href="#cityPage" id="newUserButton" class="button">Yeni Şehir-Olanak Kaydet</a>
+
 
 				</ul>
 				</div>
@@ -242,7 +246,7 @@
 
 
 
-
+<script src="index.ts"></script>
 	</body>
 
 

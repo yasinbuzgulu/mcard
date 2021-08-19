@@ -11,20 +11,22 @@ export class Card implements ICard {
   private _identity: number;
   private _price: number;
   private _expiryDate: string;
-  private city:City ;
-  private applicant:Applicant;
+  private city:string ;
+  private applicant:string;
+  private opportunity: string;
 
-  constructor(identity: number, price:number, expiryDate: string, applicant:Applicant, city:City ){
+  constructor(identity: number, price:number, expiryDate: string, applicant:string, city:string, opportunity:string){
     this._identity = identity;
     this._price = price;
     this._expiryDate = expiryDate;
     this.applicant = applicant;
     this.city = city;
-
+    this.opportunity = opportunity;
 
   }
-  User: Applicant;
-  CityOpportunity: City;
+  User: string;
+  City: string;
+  Opportunity: string;
   CardIdentitty: number;
   CardPrice: number;
   CardExpiryDate: Date;

@@ -11,8 +11,6 @@ export class DataStorage {
 static cities:  Array<ICity> = new Array();
 static applicants: Array<IApplicant> = new Array();
 static cards: Array<ICard> = new Array();
-static onlyApplicant = new Array();
-
 
 /**
  * Programda kullanılacak 

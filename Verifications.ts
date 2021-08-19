@@ -12,12 +12,10 @@ export class Verifications {
   }
 
   static checkID(value) {
-    value = value.toString();
-    var valueNum = /^\d+$/;
-    if(value!=valueNum) {alert("Kimlik Numarasını Yanlış Girdiniz!(sadece sayı içermelidir)"); ListManager.removeLast(); }
+     ListManager.removeLast();
 
     let lastDigit = value % 10;
-    if(lastDigit==0){ alert("Kimlik Numarasını Yanlış Girdiniz!(tek sayı olamaz)"); }
+    if(lastDigit==0){ return false; alert("Kimlik Numarasını Yanlış Girdiniz!(tek sayı olamaz)"); }
     
 
     var totalX = 0;
@@ -41,19 +39,17 @@ export class Verifications {
 
         //çıkan sonucu 7 ile çarpıp, çift hanelerin toplamanı çıkartıp mod 10'nuna bakıyoruz. 10. hanedeki rakama eşit mi diye.
         //bütün kuralların uyup uymadığını geri döndürüyoruz
-     if( ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0)) alert("Kimlik Numarasını Yanlış Girdiniz!")
+     if( ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0)) { return false; alert("Kimlik Numarasını Yanlış Girdiniz!"); }
 
   }
 
   static checkDate(inputDate) {
-    var regex=new RegExp("([0-9]{4}[-](0[1-9]|1[0-2])[-]([0-2]{1}[0-9]{1}|3[0-1]{1})|([0-2]{1}[0-9]{1}|3[0-1]{1})[-](0[1-9]|1[0-2])[-][0-9]{4})");
-    var dateOk=regex.test(inputDate);
-    if(dateOk){
-        alert("Ok");
-    }else{
-        alert("not Ok");
-        return false;
-    }
+    let today = new Date().toLocaleDateString()
+    var d1 = Date.parse(today);
+    var d2 = Date.parse(inputDate);
+    if (d1 < d2) {
+    alert ("Error!");
+}
   }
 
 

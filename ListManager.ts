@@ -10,7 +10,6 @@ export class ListManager {
     selectList.id = "myUserSelect";
     selectList.innerHTML = `<option value="none" selected disabled hidden required> Lütfen Kullanıcı Seçiniz`;
     myUser.appendChild(selectList);
-
     for (let i = 0; i < DataStorage.applicants.length; i++) {
       let option = document.createElement("option");
       option.value = DataStorage.applicants[i].ApplicantID.toString();
@@ -39,21 +38,20 @@ export class ListManager {
  
     for (let i = 0; i < DataStorage.cities.length; i++) {
       let option = document.createElement("option");
-      option.value = DataStorage.cities[i].CityName;
+      option.value = DataStorage.cities[i].CityName ;
       option.text = DataStorage.cities[i].CityName ;
       selectListCity.appendChild(option);
     }
   }
 
-  static createCitySelectList(myCitySelectBox,citiesName?) {
+   static createCitySelectList(myCitySelectBox,citiesName?) {
    const checkBoxList = document.getElementById("checkBoxList");
    checkBoxList.innerHTML = "";
 
      const myCityOpportunitySelect : HTMLInputElement  = document.getElementById("myCityOpportunitySelect") as HTMLInputElement;
      var selectedCitiesName = myCityOpportunitySelect.options[myCityOpportunitySelect.selectedIndex].value; 
      console.log(selectedCitiesName);
-    const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
-
+     const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
 
     for (let i = 0; i < citiesList.length; i++) {
       //document.getElementById("checkBoxList").innerHTML = "";
@@ -265,6 +263,112 @@ export class ListManager {
     ListManager.createCityOpportunityList(DataStorage.cities);
   }
   
+  static createCardList(cardList) {
+    let cardTable = document.getElementById("cardTableId");
+    cardTable.innerHTML = "";
+    let table = document.createElement("table");
+    let t1body = document.createElement("tbody");
+    table.id = "cardTableReferedId";
+    table.innerHTML = `<thead>
+                              <tr>
+                              <th>Kart ID</th>
+                              <th>Kart Son Kullanma Tarihi</th>
+                              <th>Kullancı İsmi</th>
+                              <th>Kullanıcı Soyismi</th>
+                              <th>Kullanıcı Kimlik Numarası</th>
+                              <th>Şehir</th>
+                              <th>Sil</th>
+                              <th>Düzenle</th>
+                              </tr>
+				    			    </thead>`;
+    debugger;
+    cardTable.appendChild(table);
+    //debugger;
+    for(let i = 0; i<cardList.length; i++) {
+      let row = document.createElement("tr");
+      let cell = document.createElement("td");
+      let cellText = document.createTextNode(cardList[i].CardIdentitty);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cardList[i].ExpiryDate);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cardList[i].User);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      // cell = document.createElement("td");
+      // cellText = document.createTextNode(cardList[i].ApplicantSurname);
+      // cell.appendChild(cellText);
+      // row.appendChild(cell);
+
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cardList[i].opportunity);
+      cell.appendChild(cellText);
+
+      row.appendChild(cell);
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cardList[i].City);
+      cell.appendChild(cellText);
+
+/*      const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
+      let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
+      let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
+      for(let j=0; j<resultCity.length; j++) {
+        let rowOpportunity = document.createElement("tr");
+        let cellOpportunity = document.createElement("td");
+        let cellTextOpportunity = document.createTextNode(resultCity[i].OpportunityName);
+
+        row.appendChild(cell);
+        let cellButtonDelete = document.createElement("button");
+        cell = document.createElement("td");
+        cellButtonDelete.innerHTML = "Sil";
+  
+        cellButtonDelete.addEventListener("click", function () {
+          let confirmDelete = confirm ("Kartı silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+          if (confirmDelete) {
+          DataStorage.cards = DataStorage.cards.filter (card => (card.CardIdentitty) != (cardList[i].CardIdentitty));
+          ListManager.refreshCardTable();
+          }
+          return;
+        } mainPage
+        );
+        debugger;
+        cell.appendChild(cellButtonDelete);
+        row.appendChild(cell);
+  
+        cell = document.createElement("td");
+        let cellEditButton = document.createElement("button");
+        cellEditButton.setAttribute("href", "cardPage");
+        cellEditButton.innerHTML = "Düzenle";
+        cellEditButton.addEventListener("click", function() {
+          window.location.href = '#cardPage';
+          TableManager.cardEditTable(cardList, i);
+          return;
+          
+        });
+        cell.appendChild(cellEditButton);
+        row.appendChild(cell);
+         t1body.appendChild(row);
+
+      }
+
+*/
+     }
+     table.appendChild(t1body);
+     cardTable.appendChild(table);
+
+  }
+  static refreshCardTable() {
+    let element = document.getElementById("cardTableReferedId");
+    element.innerHTML = "";
+    element.parentNode.removeChild(element);
+    ListManager.createCardList(DataStorage.cards);
+  }
 
   
   static removeLast() {

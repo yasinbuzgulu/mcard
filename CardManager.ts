@@ -6,7 +6,7 @@ import { DiscountAmount } from './typeScriptFiles/enum/types';
 export class CardManager {
 
   static createCardObject() {
-    let cardIdendity = Math.floor(Math.random() * 10000000000000000);
+    let cardIdendity = Math.floor(Math.random() * 100000000);
     let cardPrice = <HTMLInputElement> document.getElementById("cardPriceAttach");
 
     let d = new Date();
@@ -16,40 +16,44 @@ export class CardManager {
     let c = new Date(year + 4, month, day);
     let expiryDate = (c.toDateString());
     
-   // let applicant : Array <string | string | number>;
     const userSelector :HTMLElement = document.getElementById("myUserSelect");
     let selectedUserID = userSelector.options[userSelector.selectedIndex].value;
-    let resultUser = DataStorage.applicants.filter(item => item.ApplicantID == selectedUserID);
+    const resultUser = DataStorage.applicants.filter(item => item.ApplicantID == selectedUserID);
 
     const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
     let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
     let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
+   
+    let checkedUser : any = [];
+    for(let i =0; i<resultUser.length; i++){
+      // console.log(resultUser[i].ApplicantName+" ");
+      // console.log(resultUser[i].ApplicantSurname + " ");
+      // console.log(resultUser[i].ApplicantID +" ");
+      checkedUser.push(resultUser[i].ApplicantName+" " + resultUser[i].ApplicantSurname + " " + resultUser[i].ApplicantID +" ");
+    }
 
-    let myApplicant = resultUser[0].ApplicantName + " "+ resultUser[0].ApplicantSurname + " "+ resultUser[0].ApplicantID ;
-    let myCityOpportunity = resultCity[0].CityName;
-
+    let checkedCity : any = [];
+    for(let i =0; i<resultCity.length; i++){
+      //console.log(resultCity[i].CityName);
+      checkedCity.push(resultCity[i].CityName);
+    }
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
-    var inputElems = document.getElementsByTagName("input"),
-    count = 0;
-    let checkedOpportunity:string[]; 
+    let element = <HTMLInputElement> document.getElementById("checkBoxList");  
+    if (element.checked) {  }
+
+    var inputElems = document.getElementsByTagName("input");
+    let checkedOpportunity: any =[]; 
     for (var i=0; i<inputElems.length; i++) {       
        if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
 
-        let temp = inputElems[i];
+         checkedOpportunity.push( inputElems[i].value );
         }
     }
-    let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, myApplicant,(myCityOpportunity) ); 
-    DataStorage.cards.push(newCard);
-    console.log(DataStorage.cards[0]);
-    /*
-    let element = <any> document.getElementsByName("inputSelectOpportunity0");  
-    if (element.checked) {  }
+    //console.log(checkedOpportunity);
 
-    let element = <any> document.getElementsByName("inputSelectOpportunity1");  
-    if (element.checked) {  }
-    let element = <any> document.getElementsByName("inputSelectOpportunity2");  
-    if (element.checked) {  }
-    */
+    let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
+    DataStorage.cards.push(newCard);
+
   }
 
 
