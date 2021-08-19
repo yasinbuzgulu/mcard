@@ -79,8 +79,7 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input min="1800-01-01" id="applicantBirthDateAttach" name="date"  pattern='(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])|31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})' placeholder="dd/mm/yyyy" type="text" required>
-				<span class="omrs-input-label">Doğum Tarihinizi Giriniz</span>	
+				<input id="applicantBirthDateAttach" min='1899-01-01' name="date"  pattern='(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])|31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})'  type="date" required>
 			</label>
 		</div>
 		<div class="omrs-input-group">
@@ -137,13 +136,15 @@
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="perYearPriceAttatch" type="number" required>
+				<input id="perYearPriceAttatch" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+				maxlength="8" type="number" required>
 				<span class="omrs-input-label">1 Yıllık Ücret Giriniz</span>	
 			</label>
 		</div>
 		<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="topLimitYearValueAttach" type="number" required>
+				<input id="topLimitYearValueAttach" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+				maxlength="1" max="6" type="number" required>
 				<span class="omrs-input-label">Tanımlanabilen Max. Yıl</span>
 			</label>
 		</div>
@@ -177,7 +178,8 @@
 		</div>
 			<div class="omrs-input-group">
 			<label class="omrs-input-underlined">
-				<input id="cardPriceAttach" type="number" required>
+				<input id="cardPriceAttach" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+				maxlength="6" required>
 				<span class="omrs-input-label">Kart Ücreti</span>	
 			</label>
 		</div>
@@ -243,7 +245,6 @@
 				</div>
 			</div>
 			</section>
-
 
 
 <script src="index.ts"></script>

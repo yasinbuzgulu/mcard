@@ -12,6 +12,7 @@ import { TableManager } from './TableManager';
 let state = 0;
 const userTableSection: HTMLElement = document.getElementById("userListSection");
 userTableSection.style.display = "none";
+document.getElementById('applicantBirthDateAttach').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
 const cityOpportunityListSection: HTMLElement = document.getElementById("cityOpportunityListSection");
 cityOpportunityListSection.style.display = "none";

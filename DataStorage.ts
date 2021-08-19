@@ -79,7 +79,7 @@ static createCityList() {
       {
         ApplicantName :"Yasin",
         ApplicantSurname: "Büzgülü",
-        ApplicantBirthDate: "05/09/1997",
+        ApplicantBirthDate: "1997-09-05",
         ApplicantID: 53452312702,
         ApplicantTypeBasedOnAge: "Normal",
         ApplicantTypeBasedOnEducation:  "Öğrenci"

@@ -96,7 +96,7 @@ export class ListManager {
                               <tr>
                               <th>İsim</th>
                               <th>Soyisim</th>
-                              <th>Doğum Tarihi</th>
+                              <th>Doğum Tarihi (YYYY-MM-DD)</th>
                               <th>Kimlik Numarası</th>
                               <th>Yaşa Göre Tip</th>
                               <th>Eğitime Göre Tip</th>

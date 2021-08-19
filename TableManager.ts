@@ -10,17 +10,23 @@ static userEditTable (userList, i) {
         applicantNameEdit.defaultValue = DataStorage.applicants[i].ApplicantName.toString();
         let applicantSurnameEdit = <HTMLInputElement>(  document.getElementById("applicantSurnameAttach")  );
         applicantSurnameEdit.defaultValue = DataStorage.applicants[i].ApplicantSurname.toString(); 
-        let applicantSBirthDateEdit = <HTMLInputElement>(  document.getElementById("applicantBirthDateAttach")  );
-        applicantSBirthDateEdit.value = DataStorage.applicants[i].ApplicantBirthDate.toLocaleString(); 
+     
         let applicantIdEdit = <HTMLInputElement>(  document.getElementById("applicantIDAttach")  );
         applicantIdEdit.defaultValue = DataStorage.applicants[i].ApplicantID.toString(); 
 
-        
+        document.getElementById('applicantBirthDateAttach').value = DataStorage.applicants[i].ApplicantBirthDate.substring(0, 10);
+
         console.log(DataStorage.applicants[i].ApplicantTypeBasedOnAge);
         switch(DataStorage.applicants[i].ApplicantTypeBasedOnAge) {
                 case "Çocuk" : document.getElementById("citizenTypeSelection").value = '0';
                 case 'Normal': document.getElementById("citizenTypeSelection").value = '1';
                 case 'Yaşlı' : document.getElementById("citizenTypeSelection").value = '2';
+        }
+        console.log(DataStorage.applicants[i].ApplicantTypeBasedOnEducation);
+        switch(DataStorage.applicants[i].ApplicantTypeBasedOnEducation) {
+                case "Öğrenci" : document.getElementById("applicatTypeSelection").value = '0';
+                case 'Sivil': document.getElementById("applicatTypeSelection").value = '1';
+                case 'ikiside değil' : document.getElementById("applicatTypeSelection").value = '2';
         }
         
         //applicantCitizenType.defaultValue = DataStorage.applicants[i].ApplicantTypeBasedOnAge.toString(); 
