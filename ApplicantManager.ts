@@ -4,11 +4,14 @@ import { ListManager } from "./ListManager";
 import { TableManager } from "./TableManager";
 import { ApplicantType, CitizenType } from "./typeScriptFiles/enum/types";
 import { Verifications } from "./Verifications";
-
+/**
+ *  * Program başvuran kişinin bilgilerinin oluşturulduğu ve verisaklamaya gönderildiği cardList sınıf
+ */
 export class ApplicantManager {
 
   static createApplicantObject () {
     let applicantName =<HTMLInputElement>document.getElementById("applicantNameAttach");
+    Verifications.checkText(applicantName);
     let applicantSurname =<HTMLInputElement>document.getElementById("applicantSurnameAttach");
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
     Verifications.checkDate(applicantBirthDate);
@@ -30,11 +33,14 @@ export class ApplicantManager {
       case "1": { typeOfApplicantBasedOnEducation = "Sivil";  break; }
       case "2": {  typeOfApplicantBasedOnEducation = "--";  }
     }
-
-    let newApplicant = new Applicant(applicantName.value, applicantSurname.value,applicantBirthDate.value, Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
+    if(Verifications.checkID(applicantID)){
+    let newApplicant = new Applicant(applicantName.value.toUpperCase(), applicantSurname.value.toUpperCase(), applicantBirthDate.value, Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
 
     DataStorage.applicants.push(newApplicant);
     ListManager.updateUserSelectionList();
+    alert("Kullanıcı başarılı bir şekilde listeye eklendi.");
+
+  }
   
   }
 

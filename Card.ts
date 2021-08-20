@@ -5,7 +5,7 @@ import { ICard } from "./typeScriptFiles/interface/ICard";
 
 
 /**
- * Programda tanımlı kartların ID, fiyat, son kullanım tarihi ve indirim miktarlarının belirlendiği sınıf
+ * Programda tanımlı kartların ID, fiyat, son kullanım tarihi, kullanıcının ve şehir-olanağın tanımlandığı sınıf
  */
 export class Card implements ICard {
   private _identity: number;

@@ -2,7 +2,9 @@ import { Applicant } from './Applicant';
 import { Card } from './Card';
 import { DataStorage } from './DataStorage';
 import { DiscountAmount } from './typeScriptFiles/enum/types';
-
+/**
+ * Kart bilgilerinin derlenip yeni kart nesnelerinin oluşturulduğu sınıf
+ */
 export class CardManager {
 
   static createCardObject() {
@@ -26,17 +28,19 @@ export class CardManager {
    
     let checkedUser : any = [];
     for(let i =0; i<resultUser.length; i++){
-      // console.log(resultUser[i].ApplicantName+" ");
-      // console.log(resultUser[i].ApplicantSurname + " ");
-      // console.log(resultUser[i].ApplicantID +" ");
-      checkedUser.push(resultUser[i].ApplicantName+" " + resultUser[i].ApplicantSurname + " " + resultUser[i].ApplicantID +" ");
+      checkedUser.push(resultUser[i].ApplicantName.toUpperCase() +" " + resultUser[i].ApplicantSurname.toUpperCase() + " " + resultUser[i].ApplicantID +" ");
+      var typeCitizen = resultUser[i].ApplicantTypeBasedOnAge;
+      var typeApplicant = resultUser[i].ApplicantTypeBasedOnEducation;
     }
 
     let checkedCity : any = [];
     for(let i =0; i<resultCity.length; i++){
       //console.log(resultCity[i].CityName);
-      checkedCity.push(resultCity[i].CityName);
+      checkedCity.push(resultCity[i].CityName.toUpperCase());
+      var feeOpportunity = resultCity[i].PerYearPrice;
+      var feeYear = resultCity[i].TopLimitYearValue;
     }
+
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
     let element = <HTMLInputElement> document.getElementById("checkBoxList");  
     if (element.checked) {  }
@@ -49,13 +53,13 @@ export class CardManager {
          checkedOpportunity.push( inputElems[i].value );
         }
     }
-    //console.log(checkedOpportunity);
 
+    console.log(checkedOpportunity+"dfghjk");
+    let totalPrice = feeOpportunity * feeYear;
+    
     let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
     DataStorage.cards.push(newCard);
+    alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number(totalPrice) +"\n Ödenecek tutar : " );
 
   }
-
-
 }
-

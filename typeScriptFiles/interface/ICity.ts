@@ -1,6 +1,6 @@
 
 /**
- * İndirim sınıfına erişmek için kullanılan interface
+ * Şehir sınıfına erişmek için kullanılan interface
  */
 export interface ICity {
 
@@ -8,6 +8,7 @@ export interface ICity {
    OpportunityName : string;
    PerYearPrice : number;
    TopLimitYearValue : number;
-   
+   CityOpportunityId : number;
+
 }
 

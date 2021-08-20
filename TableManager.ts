@@ -16,17 +16,15 @@ static userEditTable (userList, i) {
 
         document.getElementById('applicantBirthDateAttach').value = DataStorage.applicants[i].ApplicantBirthDate.substring(0, 10);
 
-        console.log(DataStorage.applicants[i].ApplicantTypeBasedOnAge);
         switch(DataStorage.applicants[i].ApplicantTypeBasedOnAge) {
-                case "Çocuk" : document.getElementById("citizenTypeSelection").value = '0';
-                case 'Normal': document.getElementById("citizenTypeSelection").value = '1';
-                case 'Yaşlı' : document.getElementById("citizenTypeSelection").value = '2';
+                case "Çocuk" : document.getElementById("citizenTypeSelection").value = '1';
+                case 'Normal': document.getElementById("citizenTypeSelection").value = '2';
+                case 'Yaşlı' : document.getElementById("citizenTypeSelection").value = '0';
         }
-        console.log(DataStorage.applicants[i].ApplicantTypeBasedOnEducation);
         switch(DataStorage.applicants[i].ApplicantTypeBasedOnEducation) {
-                case "Öğrenci" : document.getElementById("applicatTypeSelection").value = '0';
-                case 'Sivil': document.getElementById("applicatTypeSelection").value = '1';
-                case 'ikiside değil' : document.getElementById("applicatTypeSelection").value = '2';
+                case "Öğrenci" : document.getElementById("applicatTypeSelection").value = '2';
+                case 'Sivil': document.getElementById("applicatTypeSelection").value = '0';
+                case 'ikiside değil' : document.getElementById("applicatTypeSelection").value = '1';
         }
         
         //applicantCitizenType.defaultValue = DataStorage.applicants[i].ApplicantTypeBasedOnAge.toString(); 
@@ -51,7 +49,11 @@ static cityEditTable (cityList, i) {
         ListManager.refreshCityOpportunityTable();
 }
 
-        static resetUserPage() {
+static cardEditTable(cardList, i) {
+
+}
+
+static resetUserPage() {
                 let applicantNameEdit = <HTMLInputElement>(  document.getElementById("applicantNameAttach")  );
                 applicantNameEdit.defaultValue = "";
                 let applicantSurnameEdit = <HTMLInputElement>(  document.getElementById("applicantSurnameAttach")  );
@@ -68,7 +70,7 @@ static cityEditTable (cityList, i) {
 
         }
 
-        static resetCityPage() {
+static resetCityPage() {
                 let cityNameEdit = <HTMLInputElement>(  document.getElementById("cityNameAttach")  );
                 cityNameEdit.defaultValue = "";
                 let opportunityNameEdit = <HTMLInputElement>(  document.getElementById("opportunityNameAttach")  );
@@ -80,7 +82,7 @@ static cityEditTable (cityList, i) {
                 document.getElementById('cityForm').reset() as HTMLFormElement;
 
                        }
-        static resetCardPage() {
+static resetCardPage() {
                 let cardPriceEdit = <HTMLInputElement> (document.getElementById("cardPriceAttach"));
                 cardPriceEdit.defaultValue = '';
                 let userSelectionEdit = <HTMLInputElement> (document.getElementById("myUserSelect"));
