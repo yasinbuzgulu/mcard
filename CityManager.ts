@@ -1,5 +1,6 @@
 import { City } from './City';
 import { DataStorage } from './DataStorage';
+import { ListManager } from './ListManager';
 
 export class CityManager {
 
@@ -9,8 +10,10 @@ export class CityManager {
     let perYearPrice = <HTMLInputElement>(document.getElementById("perYearPriceAttatch"));
     let topLimitYearValue = <HTMLInputElement>(document.getElementById("topLimitYearValueAttach"));
 
-    let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value))
-    DataStorage.cities.push(newCityAndOpportunity)
-    
+    let newCityAndOpportunity = new City(cityName.value, opportunityName.value, Number(perYearPrice.value), Number(topLimitYearValue.value));    
+    DataStorage.cities.push(newCityAndOpportunity);
+    ListManager.updateCityOpportunitySelectionList();
+    ListManager.updateCitySelectionList();
+
   }
 }

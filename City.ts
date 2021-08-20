@@ -4,6 +4,7 @@ import { ICity } from "./typeScriptFiles/interface/ICity";
  * Programdaki şehir isimlerinin tutulduğu sınıf
  */
 export class City implements ICity {
+  private _cityOpportunityArrayId : number;
   private _cityName : string;
   private _opportunityName: string;
   private _perYearPrice: number;

@@ -10,25 +10,26 @@ import { ICard } from "./typeScriptFiles/interface/ICard";
 export class Card implements ICard {
   private _identity: number;
   private _price: number;
-  private _expiryDate: Date;
-  private _discountAmount : DiscountAmount;
-  private city:City ;
-  private applicant:Applicant;
+  private _expiryDate: string;
+  private city:string ;
+  private applicant:string;
+  private opportunity: string;
 
-  constructor(identity: number, price:number, expiryDate: Date, discountAmount : DiscountAmount, applicant:Applicant, city:City ){
+  constructor(identity: number, price:number, expiryDate: string, applicant:string, city:string, opportunity:string){
     this._identity = identity;
     this._price = price;
     this._expiryDate = expiryDate;
-    this._discountAmount = discountAmount;
     this.applicant = applicant;
     this.city = city;
-
+    this.opportunity = opportunity;
 
   }
+  User: string;
+  City: string;
+  Opportunity: string;
   CardIdentitty: number;
   CardPrice: number;
   CardExpiryDate: Date;
-  CardDiscountAmount: DiscountAmount;
 
 
   get Identity() {
@@ -52,11 +53,5 @@ export class Card implements ICard {
     this._expiryDate = expiryDate;
   }
 
-  get DiscountAmount() {
-    return this._discountAmount;
-  }
-  set DiscountAmount(discountAmount) {
-    this._discountAmount = discountAmount;
-  }
 
 }

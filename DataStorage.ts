@@ -11,8 +11,6 @@ export class DataStorage {
 static cities:  Array<ICity> = new Array();
 static applicants: Array<IApplicant> = new Array();
 static cards: Array<ICard> = new Array();
-static onlyApplicant = new Array();
-
 
 /**
  * Programda kullanılacak 
@@ -32,45 +30,59 @@ static listCards() {
 static createCityList() {
   this.cities.push(
       {
-        CityName: "İstanbul",
-        OpportunityName: "Kütüphane",
+        CityName: "Istanbul",
+        OpportunityName: "Otopark",
+        PerYearPrice: 225,
+        TopLimitYearValue: 1
+      },
+      {
+        CityName: "Istanbul",
+        OpportunityName: "Kutuphane",
+        PerYearPrice: 400,
+        TopLimitYearValue: 3
+      },
+      {
+        CityName: "Istanbul",
+        OpportunityName: "Tiyatro",
         PerYearPrice: 400,
         TopLimitYearValue: 3
       },
       {
         CityName: "Ankara",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 300,
         TopLimitYearValue: 4
       },  {
         CityName: "Bursa",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 250,
         TopLimitYearValue: 5
       },  {
         CityName: "Adana",
-        OpportunityName: "Kütüphane",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 200,
         TopLimitYearValue: 5
       },  {
-        CityName: "İzmir",
-        OpportunityName: "Kütüphane",
+        CityName: "Izmir",
+        OpportunityName: "Kutuphane",
         PerYearPrice: 300,
         TopLimitYearValue: 4
       });
+
     return this.cities;
   }
 
+  
 
   static createApplicantlist() {
     this.applicants.push(
       {
         ApplicantName :"Yasin",
         ApplicantSurname: "Büzgülü",
-        ApplicantBirthDate: new Date (1478708162000),
+        ApplicantBirthDate: "1997-09-05",
         ApplicantID: 53452312702,
-        ApplicantTypeBasedOnAge: CitizenType.NORMAL,
-        ApplicantTypeBasedOnEducation: ApplicantType.STUDENT 
+        ApplicantTypeBasedOnAge: "Normal",
+        ApplicantTypeBasedOnEducation:  "Öğrenci"
       });
       return this.applicants;
   }

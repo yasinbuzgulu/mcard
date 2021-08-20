@@ -1,23 +1,61 @@
+import { Applicant } from './Applicant';
+import { Card } from './Card';
+import { DataStorage } from './DataStorage';
 import { DiscountAmount } from './typeScriptFiles/enum/types';
 
 export class CardManager {
 
   static createCardObject() {
-    const cardIdendity = <HTMLInputElement> document.getElementById("cardIdendityAttach");
-    const cardPrice = <HTMLInputElement> document.getElementById("cardPriceAttach");
-    const expiryDate = <HTMLInputElement> document.getElementById("expiryDateAttach");
+    let cardIdendity = Math.floor(Math.random() * 100000000);
+    let cardPrice = <HTMLInputElement> document.getElementById("cardPriceAttach");
 
-    let selectedDiscountAmount: DiscountAmount;
-    let selectedDiscountAmountRadioButton = <HTMLInputElement> document.getElementById("discountAmount-full");
-    if(selectedDiscountAmountRadioButton.checked) selectedDiscountAmount = DiscountAmount.FULL;
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth();
+    let day = d.getDate();
+    let c = new Date(year + 4, month, day);
+    let expiryDate = (c.toDateString());
+    
+    const userSelector :HTMLElement = document.getElementById("myUserSelect");
+    let selectedUserID = userSelector.options[userSelector.selectedIndex].value;
+    const resultUser = DataStorage.applicants.filter(item => item.ApplicantID == selectedUserID);
 
-    selectedDiscountAmountRadioButton = <HTMLInputElement> document.getElementById("discountAmount-percentage");
-    if (selectedDiscountAmountRadioButton.checked) selectedDiscountAmount = DiscountAmount.PERCENTAGE;
+    const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
+    let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
+    let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
+   
+    let checkedUser : any = [];
+    for(let i =0; i<resultUser.length; i++){
+      // console.log(resultUser[i].ApplicantName+" ");
+      // console.log(resultUser[i].ApplicantSurname + " ");
+      // console.log(resultUser[i].ApplicantID +" ");
+      checkedUser.push(resultUser[i].ApplicantName+" " + resultUser[i].ApplicantSurname + " " + resultUser[i].ApplicantID +" ");
+    }
 
-    selectedDiscountAmountRadioButton = <HTMLInputElement> document.getElementById("discountAmount-none");
-    if (selectedDiscountAmountRadioButton.checked) selectedDiscountAmount = DiscountAmount.NONE
+    let checkedCity : any = [];
+    for(let i =0; i<resultCity.length; i++){
+      //console.log(resultCity[i].CityName);
+      checkedCity.push(resultCity[i].CityName);
+    }
+    const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
+    let element = <HTMLInputElement> document.getElementById("checkBoxList");  
+    if (element.checked) {  }
 
+    var inputElems = document.getElementsByTagName("input");
+    let checkedOpportunity: any =[]; 
+    for (var i=0; i<inputElems.length; i++) {       
+       if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+
+         checkedOpportunity.push( inputElems[i].value );
+        }
+    }
+    //console.log(checkedOpportunity);
+
+    let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
+    DataStorage.cards.push(newCard);
 
   }
-};
+
+
+}
 
