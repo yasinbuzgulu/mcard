@@ -7,7 +7,7 @@ export class Verifications {
   static checkText(text) {
   }
 
-  static checkID(idNumber) {
+  static checkID(idNumber?,cardId?) {
     let helper = 0;
       for(let i = 0; i<DataStorage.applicants.length; i++) {
         if(idNumber.value == DataStorage.applicants[i].ApplicantID){
@@ -78,12 +78,12 @@ export class Verifications {
   }
 
   static checkCityOpportunity(city,opportunity) {
-    let helper = 0;
+        let helper = 0;
     let cityLast = city.value.toUpperCase();
     let opportunityLast = opportunity.value.toUpperCase();
       for(let i = 0; i<DataStorage.cities.length; i++) {
         if(cityLast == DataStorage.cities[i].CityName){
-          let confirmDelete = confirm ("Girelen Id'ye (" + cityLast + opportunityLast+ ") sahip kayıtlı bir kullanıcı var.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+          let confirmDelete = confirm ("Girelen  (" + cityLast + "  ve " + opportunityLast+ ") için mevcut bir kayıt var.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
           if (confirmDelete) {
             DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (DataStorage.cities[i].CityName+DataStorage.cities[i].OpportunityName));
           return true;
@@ -94,6 +94,37 @@ export class Verifications {
     else {return false;}
   }
 
+  static checkCardExistence(myApplicant, mycity, cardList) {
 
+      // console.log(myApplicant+"  ---applicant");
+      // console.log(city+"   --city");
+
+      for(let i = 0; i<cardList.length; i++) {
+          let id =cardList[i].applicant.toString();
+          let myApplicantId = (id.slice(id.length - 11));
+          console.log(cardList[i].applicant+"yoko");
+          console.log(cardList[i].city.toString()+"varr");
+      }
+
+                  let controller = 0;
+                for(let i = 0; i<cardList.length; i++) {
+                  let id =cardList[i].applicant;
+                  let myApplicantId = (id.slice(id.length - 11));
+                  if(myApplicant == myApplicantId) {
+                    if(mycity == cardList[i].city) {
+                      let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+                      if (confirmDelete) {
+                        console.log();
+                       cardList =cardList.filter (card => (card.applicant+card.city) != (DataStorage.cards[i].applicant+DataStorage.cards[i].city));
+                        return true;
+                      } else {controller =1; return false;}
+                    }
+                  }
+
+                }
+                if(controller==0) {return true;}
+                else {return false;}
+
+          }
 
 }

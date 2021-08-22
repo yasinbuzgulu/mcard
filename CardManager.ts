@@ -1,6 +1,7 @@
 import { Applicant } from './Applicant';
 import { Card } from './Card';
 import { DataStorage } from './DataStorage';
+import { Verifications } from './Verifications';
 /**
  * Kart bilgilerinin derlenip yeni kart nesnelerinin oluşturulduğu sınıf
  */
@@ -22,13 +23,15 @@ export class CardManager {
     let selectedUserID = userSelector.options[userSelector.selectedIndex].value;
     const resultUser = DataStorage.applicants.filter(item => item.ApplicantID == selectedUserID);
 
+
     const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
     let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
     let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
    
     let checkedUser : any = [];
     for(let i =0; i<resultUser.length; i++){
-      checkedUser.push(resultUser[i].ApplicantName.toUpperCase() +" " + resultUser[i].ApplicantSurname.toUpperCase() + " " + resultUser[i].ApplicantID +" ");
+      checkedUser.push(resultUser[i].ApplicantName.toUpperCase() +" " + resultUser[i].ApplicantSurname.toUpperCase() + " " + resultUser[i].ApplicantID);
+      var myApplicant = resultUser[i].ApplicantID;
       var typeCitizen = resultUser[i].ApplicantTypeBasedOnAge;
       var typeApplicant = resultUser[i].ApplicantTypeBasedOnEducation;
     }
@@ -50,6 +53,7 @@ export class CardManager {
          checkedOpportunity.push( inputElems[i].value );
         }
     }
+    
     let opportunityPrice  = [];
     for(let i = 0; i<DataStorage.cities.length; i++){
       if(checkedCity==DataStorage.cities[i].CityName) {
@@ -61,10 +65,10 @@ export class CardManager {
         }
       }
     }
-
-    let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
-    DataStorage.cards.push(newCard);
-    alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number() +"\n Ödenecek tutar : " );
-
+    if (Verifications.checkCardExistence(myApplicant,checkedCity,DataStorage.cards)) {
+        let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
+        DataStorage.cards.push(newCard);
+        alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number() +"\n Ödenecek tutar : " );
+     }
   }
 }

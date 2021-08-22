@@ -1,5 +1,3 @@
-import { ApplicantType, CitizenType } from "../../typeScriptFiles/enum/types";
-
 /**
  * Başvuran kişi sınıfına erişmek için kullanılan interface
  */

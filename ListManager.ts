@@ -170,7 +170,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#applicantPage';
-        TableManager.userEditTable(userList, i);
+        TableManager.editUserTable(userList, i);
         return;
         
       });
@@ -258,7 +258,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#cityPage';
-        TableManager.cityEditTable(cityOpportunityList,i);
+        TableManager.editCityTable(cityOpportunityList,i);
         return;
         
       });
@@ -351,7 +351,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#cardPage';
-        TableManager.cardEditTable(cardList,i);
+        TableManager.editCardTable(cardList,i);
         return;
         
       });

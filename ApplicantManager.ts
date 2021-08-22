@@ -1,8 +1,8 @@
+import { ApplicantType, CitizenType } from "../../typeScriptFiles/enum/types";
 import { Applicant } from "./Applicant";
 import { DataStorage } from "./DataStorage";
 import { ListManager } from "./ListManager";
 import { TableManager } from "./TableManager";
-import { ApplicantType, CitizenType } from "./typeScriptFiles/enum/types";
 import { Verifications } from "./Verifications";
 /**
  *  * Program başvuran kişinin bilgilerinin oluşturulduğu ve verisaklamaya gönderildiği cardList sınıf

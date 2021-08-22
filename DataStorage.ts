@@ -1,8 +1,6 @@
-import { ApplicantType, CitizenType } from './typeScriptFiles/enum/types';
 import { IApplicant } from './typeScriptFiles/interface/IApplicant';
 import { ICard } from './typeScriptFiles/interface/ICard';
 import { ICity } from './typeScriptFiles/interface/ICity';
-
 
 export class DataStorage {
   /**
