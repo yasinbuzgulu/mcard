@@ -81,7 +81,7 @@
 									<div class="omrs-input-group">
 										<label class="omrs-input-underlined">
 											
-											<input id="applicantIDAttach" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+											<input id="applicantIDAttach" type="number" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
 											maxlength="11"  ngModel required pattern="\d" placeholder="Kimlik Numaranızı Giriniz" >
 											
 										</label>
@@ -101,7 +101,7 @@
 								<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
 									<option value='0'>Öğrenci</option>
 									<option value='1'>Sivil</option>
-									<option value='2'>İkisi de değil</option>
+									<option value='2'>Hiçbiri</option>
 								</select>
 							</div>
 							<input id="newUserSavingButton" type="submit"  value="Kaydet" value="Reset">
@@ -130,14 +130,14 @@
 								</div>
 								<div class="omrs-input-group">
 									<label class="omrs-input-underlined">
-										<input id="perYearPriceAttatch" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+										<input id="perYearPriceAttatch" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 										maxlength="6" type="number" required>
 										<span class="omrs-input-label">1 Yıllık Ücret Giriniz</span>	
 									</label>
 								</div>
 								<div class="omrs-input-group">
 									<label class="omrs-input-underlined">
-										<input id="topLimitYearValueAttach" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+										<input id="topLimitYearValueAttach" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 										maxlength="1" max="6" type="number" required>
 										<span class="omrs-input-label">Tanımlanacak  Yıl</span>
 									</label>
@@ -172,7 +172,7 @@
 									</div>
 										<div class="omrs-input-group">
 										<label class="omrs-input-underlined">
-											<input id="cardPriceAttach" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+											<input id="cardPriceAttach" type="number" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 											maxlength="6" required>
 											<span class="omrs-input-label">Kart Ücreti</span>	
 										</label>

@@ -35,10 +35,7 @@ export class CardManager {
 
     let checkedCity : any = [];
     for(let i =0; i<resultCity.length; i++){
-      //console.log(resultCity[i].CityName);
       checkedCity.push(resultCity[i].CityName.toUpperCase());
-      var feeOpportunity = resultCity[i].PerYearPrice;
-      var feeYear = resultCity[i].TopLimitYearValue;
     }
 
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");
@@ -53,13 +50,21 @@ export class CardManager {
          checkedOpportunity.push( inputElems[i].value );
         }
     }
+    let opportunityPrice  = [];
+    for(let i = 0; i<DataStorage.cities.length; i++){
+      if(checkedCity==DataStorage.cities[i].CityName) {
+        for(let j = 0; j<checkedOpportunity.length; j++){
+          if(checkedOpportunity[j]==DataStorage.cities[i].OpportunityName) {
+            opportunityPrice.push(DataStorage.cities[i].PerYearPrice * DataStorage.cities[i].TopLimitYearValue);
 
-    console.log(checkedOpportunity+"dfghjk");
-    let totalPrice = feeOpportunity * feeYear;
-    
+          }
+        }
+      }
+    }
+
     let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
     DataStorage.cards.push(newCard);
-    alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number(totalPrice) +"\n Ödenecek tutar : " );
+    alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number() +"\n Ödenecek tutar : " );
 
   }
 }

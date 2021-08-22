@@ -1,8 +1,6 @@
 import { Applicant } from './Applicant';
 import { City } from "./City";
-import { DiscountAmount } from "./typeScriptFiles/enum/types";
 import { ICard } from "./typeScriptFiles/interface/ICard";
-
 
 /**
  * Programda tanımlı kartların ID, fiyat, son kullanım tarihi, kullanıcının ve şehir-olanağın tanımlandığı sınıf

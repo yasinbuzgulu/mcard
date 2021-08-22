@@ -16,7 +16,6 @@ export class ApplicantManager {
     let applicantBirthDate =<HTMLInputElement>document.getElementById("applicantBirthDateAttach");
     Verifications.checkDate(applicantBirthDate);
     let applicantID =<HTMLInputElement>document.getElementById("applicantIDAttach");
-    //Verifications.checkID(applicantID);
 
     const  selectedTypeOfApplicantBasedOnAgeInput = <HTMLInputElement>(document.getElementById("citizenTypeSelection"));
     let typeOfApplicantBasedOnAge;
@@ -34,12 +33,13 @@ export class ApplicantManager {
       case "2": {  typeOfApplicantBasedOnEducation = "--";  }
     }
     if(Verifications.checkID(applicantID)){
+      if(Verifications.validateID(applicantID)) {
     let newApplicant = new Applicant(applicantName.value.toUpperCase(), applicantSurname.value.toUpperCase(), applicantBirthDate.value, Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
 
     DataStorage.applicants.push(newApplicant);
     ListManager.updateUserSelectionList();
     alert("Kullanıcı başarılı bir şekilde listeye eklendi.");
-
+      }
   }
   
   }

@@ -16,16 +16,30 @@ static userEditTable (userList, i) {
 
         document.getElementById('applicantBirthDateAttach').value = DataStorage.applicants[i].ApplicantBirthDate.substring(0, 10);
 
-        switch(DataStorage.applicants[i].ApplicantTypeBasedOnAge) {
-                case "Çocuk" : document.getElementById("citizenTypeSelection").value = '1';
-                case 'Normal': document.getElementById("citizenTypeSelection").value = '2';
-                case 'Yaşlı' : document.getElementById("citizenTypeSelection").value = '0';
+        if(DataStorage.applicants[i].ApplicantTypeBasedOnAge=="Çocuk") {
+                document.getElementById("citizenTypeSelection").value = '0'
         }
-        switch(DataStorage.applicants[i].ApplicantTypeBasedOnEducation) {
-                case "Öğrenci" : document.getElementById("applicatTypeSelection").value = '2';
-                case 'Sivil': document.getElementById("applicatTypeSelection").value = '0';
-                case 'ikiside değil' : document.getElementById("applicatTypeSelection").value = '1';
+        else if (DataStorage.applicants[i].ApplicantTypeBasedOnAge=="Normal") {
+                document.getElementById("citizenTypeSelection").value = '1';
         }
+        else if (DataStorage.applicants[i].ApplicantTypeBasedOnAge=="Yaşlı") {
+                document.getElementById("citizenTypeSelection").value = '2';
+        }
+
+        if(DataStorage.applicants[i].ApplicantTypeBasedOnEducation=="Öğrenci") {
+                document.getElementById("applicatTypeSelection").value = '0';
+        }
+        else if (DataStorage.applicants[i].ApplicantTypeBasedOnEducation=="Sivil") {
+                document.getElementById("applicatTypeSelection").value = '1';
+        }
+        else  {
+                document.getElementById("applicatTypeSelection").value = '2';
+        }
+        // switch(DataStorage.applicants[i].ApplicantTypeBasedOnEducation) {
+        //         case "Öğrenci" : document.getElementById("applicatTypeSelection").value = '2';
+        //         case 'Sivil': document.getElementById("applicatTypeSelection").value = '0';
+        //         case 'ikiside değil' : document.getElementById("applicatTypeSelection").value = '1';
+        // }
         
         //applicantCitizenType.defaultValue = DataStorage.applicants[i].ApplicantTypeBasedOnAge.toString(); 
         // let applicantApplicantType = <HTMLInputElement>(  document.getElementById("applicatTypeSelection")  );

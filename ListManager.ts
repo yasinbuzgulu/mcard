@@ -44,7 +44,6 @@ export class ListManager {
     city = city.filter((element, i) => i === city.indexOf(element));
 
     for (let i = 0; i < city.length; i++) {
-    //  console.log(DataStorage.cities[i].CityName)
       let option = document.createElement("option");
       option.value = city[i] ;
       option.text = city[i] ;
