@@ -1,7 +1,6 @@
 import { Applicant } from './Applicant';
 import { Card } from './Card';
 import { DataStorage } from './DataStorage';
-import { DiscountAmount } from './typeScriptFiles/enum/types';
 /**
  * Kart bilgilerinin derlenip yeni kart nesnelerinin oluşturulduğu sınıf
  */
@@ -11,12 +10,13 @@ export class CardManager {
     let cardIdendity = Math.floor(Math.random() * 100000000);
     let cardPrice = <HTMLInputElement> document.getElementById("cardPriceAttach");
 
-    let d = new Date();
-    let year = d.getFullYear();
-    let month = d.getMonth();
-    let day = d.getDate();
-    let c = new Date(year + 4, month, day);
-    let expiryDate = (c.toDateString());
+    let todayDate = new Date();
+    let year = todayDate.getFullYear();
+    let month = todayDate.getMonth();
+    let day = todayDate.getDate();
+    let addedExpiryDateYear = 4;
+    let expiryDateValue = new Date(year + addedExpiryDateYear, month, day);
+    let expiryDate = (expiryDateValue.toDateString());
     
     const userSelector :HTMLElement = document.getElementById("myUserSelect");
     let selectedUserID = userSelector.options[userSelector.selectedIndex].value;
