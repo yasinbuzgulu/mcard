@@ -98,12 +98,17 @@ export class Verifications {
 
       // console.log(myApplicant+"  ---applicant");
       // console.log(city+"   --city");
+console.log("-----------------------------------")
+console.log(myApplicant+"benden");
+console.log(mycity+"şehrimm");
 
       for(let i = 0; i<cardList.length; i++) {
           let id =cardList[i].applicant.toString();
           let myApplicantId = (id.slice(id.length - 11));
           console.log(cardList[i].applicant+"yoko");
           console.log(cardList[i].city.toString()+"varr");
+          console.log(myApplicantId+"ed,tted");
+          console.log(cardList[i].city+"şistee");
       }
 
                   let controller = 0;
@@ -111,6 +116,7 @@ export class Verifications {
                   let id =cardList[i].applicant;
                   let myApplicantId = (id.slice(id.length - 11));
                   if(myApplicant == myApplicantId) {
+                    console.log("başvuran kişi bulundu");
                     if(mycity == cardList[i].city) {
                       let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
                       if (confirmDelete) {
