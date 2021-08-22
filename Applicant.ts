@@ -1,12 +1,11 @@
 import { City } from "./City";
+import { IApplicant } from "./typeScriptFiles/interface/IApplicant";
+
 /**
  * Program başvuran kişinin bilgilerinin saklandığı sınıf
  */
 
-import { IApplicant } from "./typeScriptFiles/interface/IApplicant";
-
 export class Applicant implements IApplicant {
-
   private _applicantName: string;
   private _applicantSurname: string;
   private _applicantBirthDate: string;
@@ -64,7 +63,6 @@ export class Applicant implements IApplicant {
     }
     set ApplicantTypeBasedOnEducation(applicantTypeBasedOnEducation : string){
       this._typeOfApplicantBasedOnEducation = applicantTypeBasedOnEducation;
-    }
-    
+    }  
 }
 

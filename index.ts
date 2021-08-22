@@ -101,8 +101,3 @@ let myCityOpportunitySelectBox = document.getElementById("cityOpportunityField")
 ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);  
 let myCitySelectBox = document.getElementById("checkBoxList");
 ListManager.createCitySelectList(myCitySelectBox,"İstanbul");  
-
-// TC Kimlik No
-function IdNumberRegEx(val) {
-  return /^[1-9]{1}[0-9]{9}[02468]{1}$/.test(val);
-}

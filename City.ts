@@ -17,7 +17,6 @@ export class City implements ICity {
     this._topLimitYearValue = topLimitYearValue;
     this.CityOpportunityId = CityOpportunityId
 }
- 
 
      get CityName() {
        return this._cityName;

@@ -72,7 +72,6 @@ static createCityList() {
     return this.cities;
   }
 
-  
 /**
  * Default olarak programa basılan kullanıcı bilgileri
  */
@@ -88,8 +87,6 @@ static createCityList() {
       });
       return this.applicants;
   }
-
-  
 }
 
 

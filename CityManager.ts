@@ -15,7 +15,8 @@ export class CityManager {
     let CityOpportunityId = Math.floor(Math.random() * 10000);
 
     if(Verifications.checkCityOpportunity(cityName,opportunityName)){
-    let newCityAndOpportunity = new City(cityName.value.toUpperCase(), opportunityName.value.toUpperCase(), Number(perYearPrice.value), Number(topLimitYearValue.value), Number(CityOpportunityId));    
+    let newCityAndOpportunity = new City(cityName.value.toUpperCase(), opportunityName.value.toUpperCase(), Number(perYearPrice.value), 
+    Number(topLimitYearValue.value), Number(CityOpportunityId));    
     DataStorage.cities.push(newCityAndOpportunity);
     ListManager.updateCityOpportunitySelectionList();
     ListManager.updateCitySelectionList();

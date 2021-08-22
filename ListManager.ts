@@ -1,6 +1,5 @@
 import { DataStorage } from './DataStorage';
 import { TableManager } from './TableManager';
-import { DiscountAmount } from './typeScriptFiles/enum/types';
 export class ListManager {
 /**
  * Yeni Kart kaydında kaydedilen kullanıcıların listelendiği kısım
@@ -61,7 +60,6 @@ export class ListManager {
     const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
 
     for (let i = 0; i < citiesList.length; i++) {
-      //document.getElementById("checkBoxList").innerHTML = "";
 
       let selectListCity = document.createElement("input");
       selectListCity.type = "checkbox";
@@ -84,7 +82,7 @@ export class ListManager {
     ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
   }
   /**
-   *  * olanak checkboxları için Ekleme, Düzenleme ve silmelere işlemelerine bağlı değişikliklerin güncellendiği kısım
+   *  olanak checkboxları için Ekleme, Düzenleme ve silmelere işlemelerine bağlı değişikliklerin güncellendiği kısım
    */
   static updateCitySelectionList() {
     let myCityOpportunitySelectBox = document.getElementById("checkBoxList");

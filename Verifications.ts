@@ -100,14 +100,10 @@ export class Verifications {
                   let id =cardList[i].applicant.toString();
                   let myApplicantId = (id.slice(id.length - 11));
                   if(myApplicant.toString() == myApplicantId) {
-                    console.log("başvuran kişi bulundu");
                     if(mycity == cardList[i].city.toString()) {
                       let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
                       if (confirmDelete) {
-                        let b = DataStorage.cards.filter(function (e) {
-                          return e.value === idNumber.value;
-                      });
-                        DataStorage.cards.splice(DataStorage.cards.findIndex(e => e.value === idNumber.value),1);
+                        var ele_rem1 = cardList.splice(i, 1);
                         return true;
                       } else {controller =1; return false;}
                     }

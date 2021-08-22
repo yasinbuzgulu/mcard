@@ -53,22 +53,27 @@ export class CardManager {
          checkedOpportunity.push( inputElems[i].value );
         }
     }
-
-    let opportunityPrice  = [];
+    let result  = 0 ;
     for(let i = 0; i<DataStorage.cities.length; i++){
-      if(checkedCity==DataStorage.cities[i].CityName) {
+      if(checkedCity[0]==DataStorage.cities[i].CityName) {
         for(let j = 0; j<checkedOpportunity.length; j++){
           if(checkedOpportunity[j]==DataStorage.cities[i].OpportunityName) {
-            opportunityPrice.push(DataStorage.cities[i].PerYearPrice * DataStorage.cities[i].TopLimitYearValue);
-
+              result = result + DataStorage.cities[i].PerYearPrice * DataStorage.cities[i].TopLimitYearValue ;
           }
         }
+      }
+    }
+    if(typeCitizen == "Çocuk" || typeCitizen == "Yaşlı") {
+      var finalPrice = 0;
+    } else {
+      if(typeApplicant == "Öğrenci") {
+        finalPrice = (result+Number(cardPrice.value))  - ((result+Number(cardPrice.value))/5);
       }
     }
     if (Verifications.checkCardExistence(myApplicant,checkedCity,DataStorage.cards,cardIdendity)) {
         let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
         DataStorage.cards.push(newCard);
-        alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number() +"\n Ödenecek tutar : " );
+        alert("Normal ücret ; \n" +" Kart Ücreti :" + Number(cardPrice.value) +"  Toplam Olanak Fiyatı :"  + result +"\n Ödenecek tutar : " + finalPrice );
      }
   }
 }

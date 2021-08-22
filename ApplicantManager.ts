@@ -1,4 +1,3 @@
-import { ApplicantType, CitizenType } from "../../typeScriptFiles/enum/types";
 import { Applicant } from "./Applicant";
 import { DataStorage } from "./DataStorage";
 import { ListManager } from "./ListManager";
@@ -43,7 +42,4 @@ export class ApplicantManager {
   }
   
   }
-
-
-
 }
