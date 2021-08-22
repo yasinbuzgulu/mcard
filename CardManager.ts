@@ -53,7 +53,7 @@ export class CardManager {
          checkedOpportunity.push( inputElems[i].value );
         }
     }
-    
+
     let opportunityPrice  = [];
     for(let i = 0; i<DataStorage.cities.length; i++){
       if(checkedCity==DataStorage.cities[i].CityName) {
@@ -65,7 +65,7 @@ export class CardManager {
         }
       }
     }
-    if (Verifications.checkCardExistence(myApplicant,checkedCity,DataStorage.cards)) {
+    if (Verifications.checkCardExistence(myApplicant,checkedCity,DataStorage.cards,cardIdendity)) {
         let newCard = new Card (Number(cardIdendity), Number(cardPrice.value), expiryDate, checkedUser,checkedCity , checkedOpportunity ); 
         DataStorage.cards.push(newCard);
         alert("Normal ücret ; \n" +" Kart Ücreti:" + Number(cardPrice.value) +" / Olanak Fiyatı"  + Number() +"\n Ödenecek tutar : " );

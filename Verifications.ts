@@ -94,34 +94,20 @@ export class Verifications {
     else {return false;}
   }
 
-  static checkCardExistence(myApplicant, mycity, cardList) {
-
-      // console.log(myApplicant+"  ---applicant");
-      // console.log(city+"   --city");
-console.log("-----------------------------------")
-console.log(myApplicant+"benden");
-console.log(mycity+"şehrimm");
-
-      for(let i = 0; i<cardList.length; i++) {
-          let id =cardList[i].applicant.toString();
-          let myApplicantId = (id.slice(id.length - 11));
-          console.log(cardList[i].applicant+"yoko");
-          console.log(cardList[i].city.toString()+"varr");
-          console.log(myApplicantId+"ed,tted");
-          console.log(cardList[i].city+"şistee");
-      }
-
+  static checkCardExistence(myApplicant, mycity, cardList,idNumber) {
                   let controller = 0;
                 for(let i = 0; i<cardList.length; i++) {
-                  let id =cardList[i].applicant;
+                  let id =cardList[i].applicant.toString();
                   let myApplicantId = (id.slice(id.length - 11));
-                  if(myApplicant == myApplicantId) {
+                  if(myApplicant.toString() == myApplicantId) {
                     console.log("başvuran kişi bulundu");
-                    if(mycity == cardList[i].city) {
+                    if(mycity == cardList[i].city.toString()) {
                       let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
                       if (confirmDelete) {
-                        console.log();
-                       cardList =cardList.filter (card => (card.applicant+card.city) != (DataStorage.cards[i].applicant+DataStorage.cards[i].city));
+                        let b = DataStorage.cards.filter(function (e) {
+                          return e.value === idNumber.value;
+                      });
+                        DataStorage.cards.splice(DataStorage.cards.findIndex(e => e.value === idNumber.value),1);
                         return true;
                       } else {controller =1; return false;}
                     }
