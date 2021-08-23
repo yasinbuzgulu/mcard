@@ -101,7 +101,7 @@ export class Verifications {
                   let myApplicantId = (id.slice(id.length - 11));
                   if(myApplicant.toString() == myApplicantId) {
                     if(mycity == cardList[i].city.toString()) {
-                      let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+                      let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity[0] + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
                       if (confirmDelete) {
                         var ele_rem1 = cardList.splice(i, 1);
                         return true;

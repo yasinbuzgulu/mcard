@@ -53,6 +53,8 @@ export class ListManager {
  * Yeni Kart kaydında şehir seçimine bağlı olarak olanakların checkbox lara koyulduğu kısım 
  */
     static createCitySelectList(myCitySelectBox,citiesName?) {
+      const opportunityArea: HTMLElement = document.getElementById("cityField");
+      opportunityArea.style.display = "inline";
     const checkBoxList = document.getElementById("checkBoxList");
     checkBoxList.innerHTML = "";
     const myCityOpportunitySelect : HTMLInputElement  = document.getElementById("myCityOpportunitySelect") as HTMLInputElement;
@@ -194,6 +196,7 @@ export class ListManager {
    * Kayıtlı şehir olanaklar için listeleme ve tablo oluşturan kısım
    */
   static createCityOpportunityList(cityOpportunityList) {
+
     let cityOpportunityTable = document.getElementById("cityOpportunityTableId");
     cityOpportunityTable.innerHTML = '';
     let table = document.createElement("table");
