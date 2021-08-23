@@ -55,14 +55,29 @@ export class TableManager {
                 ListManager.refreshCityOpportunityTable();
         }
 
- static editCardTable(cardList, i) {
+ static editCardTable(cardList, i, opportunityAmount, mySelectedOpportunity) {
                 let id =cardList[i].applicant.toString();
                 let myApplicantId = (id.slice(id.length - 11));
                 document.getElementById("myUserSelect").value = myApplicantId;
                 document.getElementById("myCityOpportunitySelect").value = cardList[i].city[0];
                 let cardPriceValueEdit = <HTMLInputElement>(  document.getElementById("cardPriceAttach")  );
                 cardPriceValueEdit.defaultValue = cardList[i]._price.toString(); 
-                
+
+                console.log(opportunityAmount+"fırsat adet");
+                console.log(mySelectedOpportunity[1]+"seçili fırsat");
+
+                for (let j = 0; j<opportunityAmount; j++) {
+                        let myOpportunityId = "inputSelectOpportunity" + j.toString();
+                        let myCheckBox = <HTMLInputElement> document.getElementById(myOpportunityId);
+                        myCheckBox.defaultChecked = false ;
+                        for (let k = 0; k<mySelectedOpportunity.length; k++) {
+                                if(myCheckBox.value == mySelectedOpportunity[k]) { 
+                                        myCheckBox.defaultChecked = true;
+                                        }
+                        }
+
+
+                }
                 DataStorage.cards = DataStorage.cards.filter (card => (card.CardIdentitty) != (cardList[i].CardIdentitty));
                 ListManager.refreshCardTable();
 
@@ -101,6 +116,10 @@ export class TableManager {
                 userSelectionEdit.value="0";
                 let citySelectionEdit = <HTMLInputElement> (document.getElementById("myCityOpportunitySelect"));
                 citySelectionEdit.value="0";
+
+                const opportunityArea: HTMLElement = document.getElementById("cityField");
+                opportunityArea.style.display = "none";
+
                 document.getElementById('cardForm').reset() as HTMLFormElement;
 
         }

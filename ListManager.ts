@@ -296,7 +296,7 @@ export class ListManager {
                               <th>Olanak</th>
                               <th>Sil</th>
                               <th>Düzenle</th>
-                              </trcardListcardListcardList>
+                              </tr>
 				    			    </thead>`;
     cardTable.appendChild(table);
     for(let i = 0; i<cardList.length; i++) {
@@ -319,12 +319,13 @@ export class ListManager {
       cellText = document.createTextNode(cardList[i].city[0]);
       cell.appendChild(cellText);
       row.appendChild(cell);
-            //}
 
       cell = document.createElement("td");
       cellText = document.createTextNode(cardList[i].opportunity);
       cell.appendChild(cellText);
       row.appendChild(cell);
+      let myOpportunityAmount = (cardList[i].city.length);
+      let mySelectedOpportunity = (cardList[i].opportunity);
 
       row.appendChild(cell);
       let cellButtonDelete = document.createElement("button");
@@ -348,8 +349,10 @@ export class ListManager {
       let cellEditButton = document.createElement("button");
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
+        const opportunityArea: HTMLElement = document.getElementById("cityField");
+        opportunityArea.style.display = "inline";
         window.location.href = '#cardPage';
-        TableManager.editCardTable(cardList,i);
+        TableManager.editCardTable(cardList, i, myOpportunityAmount, mySelectedOpportunity );
         return;
         
       });
@@ -373,7 +376,6 @@ export class ListManager {
    * Son kullanıcının kaldırıldığı kısım
    */
   static removeLast() {
- // DataStorage.applicants.pop();
   DataStorage.applicants.splice(-1,1)
 }
 }
