@@ -1,57 +1,118 @@
+import { DataStorage } from "./DataStorage";
 import { ListManager } from "./ListManager";
 
 
 export class Verifications {
 
   static checkText(text) {
-    let onlyLetter = /^[a-zA-Z]+$/.test(text);
-    if(onlyLetter== text) {
-        document.getElementById("applicantNameAttach").innerHTML = "Yanlış Girdiniz";
+  }
+
+  static checkID(idNumber?,cardId?) {
+    let helper = 0;
+      for(let i = 0; i<DataStorage.applicants.length; i++) {
+        if(idNumber.value == DataStorage.applicants[i].ApplicantID){
+          let confirmDelete = confirm ("Girelen Id'ye (" + idNumber.value+ ") sahip kayıtlı bir kullanıcı var.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+          if (confirmDelete) {
+          let b = DataStorage.applicants.filter(function (e) {
+            return e.value === idNumber.value;
+        });
+          DataStorage.applicants.splice(DataStorage.applicants.findIndex(e => e.value === idNumber.value),1);
+          return true;
+        }else {helper =1; return false;}
+      }
     }
-
+    if(helper==0) {return true;}
+    else {return false;}
   }
 
-  static checkID(value) {
-     ListManager.removeLast();
-
-    let lastDigit = value % 10;
-    if(lastDigit==0){ return false; alert("Kimlik Numarasını Yanlış Girdiniz!(tek sayı olamaz)"); }
+  static validateID(tcNumber) { 
+    let myId = tcNumber;
+    tcNumber = (tcNumber.value).toString();
     
+    // T.C. identity number 11 haneli olmalı
+    if (myId.value.length != 11)
+     { alert("Kimlik numrasını " + myId.value.length+" hane girdiniz. \n Lütfen kimlik numaranızı 11 hane giriniz"); return false; }
+    
+    const digits = tcNumber.split('');
+    // son 2 hane (10. and 11.) validasyon için tutulur
+    const d10 = Number(digits[9]);
+    const d11 = Number(digits[10]);
 
-    var totalX = 0;
-    for (var i = 0; i < 10; i++) {
-          totalX += Number(value.substr(i, 1));
+    // ilk 10 hane toplanır/ tek haneler toplanır / çift haneler toplanır
+    let sumOf10 = 0;
+    let evens = 0;
+    let odds = 0;
+    
+    digits.forEach((digitNumber, index) => {
+      digitNumber = Number(digitNumber);
+        if (index < 10) sumOf10 += digitNumber;
+        if (index < 9) {
+            if ((index + 1) % 2 === 0) {
+                evens += digitNumber;
+            } else {
+                odds += digitNumber;
+            }
         }
-    //topladığımız sayıların 10'a bölümünden kalanının 11. haneye eşit olup olmadığını kontrol ediyoruz.
-    if(totalX % 10 != value.substr(10,1)) alert("Kimlik Numarasını Yanlış Girdiniz!(validasyona uymalıdır -gerçek bir T.C no-)")
-
-    //1, 3, 5, 7, ve 9. hanelerdeki sayıları toplayacağımız değişkeni ve 2, 4, 6, ve 8. hanelerdeki sayıların toplamını atayacağımız değişkeni tanımlıyoruz.
-    var totalY1 = 0;
-    var totalY2 = 0;
-    //Tekil hanelerdeki sayıları toplayan for döngüsü:
-    for (var i = 0; i < 10; i+=2) {
-      totalY1 += Number(value.substr(i, 1));
-        }
-   //Çift hanelerdeki sayıları toplayan for döngüsü:
-    for (var i = 1; i < 10; i+=2) {
-          totalY2 += Number(value.substr(i, 1));
-        }
-
-        //çıkan sonucu 7 ile çarpıp, çift hanelerin toplamanı çıkartıp mod 10'nuna bakıyoruz. 10. hanedeki rakama eşit mi diye.
-        //bütün kuralların uyup uymadığını geri döndürüyoruz
-     if( ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0)) { return false; alert("Kimlik Numarasını Yanlış Girdiniz!"); }
-
-  }
+    });
+    
+    // ilk 10 hane toplamının mod 10 nu 11. haneyi vermelidir.
+    if (sumOf10 % 10 != d11) 
+    {alert("Girilen kimlik numarası hatalıdır! \n Lütfen tekrar giriniz");
+   return false; }
+    
+    // tek haneler tplamının 7 katından çift haneler çıkarılınca elde edilen değerin mod 10 nu 10. haneyi vermelidir
+    if (((odds * 7) - (evens)) % 10 != d10)
+    {alert("Girilen kimlik numarası hatalıdır! \n Lütfen tekrar giriniz");
+    return false; }
+    
+    return true;
+   }
 
   static checkDate(inputDate) {
     let today = new Date().toLocaleDateString()
-    var d1 = Date.parse(today);
-    var d2 = Date.parse(inputDate);
-    if (d1 < d2) {
-    alert ("Error!");
+    var todayDate = Date.parse(today);
+    var enteredDate = Date.parse(inputDate);
+    if (todayDate < enteredDate) {
+    alert ("Error!");inputDate
 }
   }
 
+  static checkCityOpportunity(city,opportunity) {
+        let helper = 0;
+    let cityLast = city.value.toUpperCase();
+    let opportunityLast = opportunity.value.toUpperCase();
+      for(let i = 0; i<DataStorage.cities.length; i++) {
+        if(cityLast == DataStorage.cities[i].CityName){
+          let confirmDelete = confirm ("Girelen  (" + cityLast + "  ve " + opportunityLast+ ") için mevcut bir kayıt var.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+          if (confirmDelete) {
+            DataStorage.cities = DataStorage.cities.filter (cityOpportunity => (cityOpportunity.CityName+cityOpportunity.OpportunityName) != (DataStorage.cities[i].CityName+DataStorage.cities[i].OpportunityName));
+          return true;
+        }else {helper =1; return false;}
+      }
+    }
+    if(helper==0) {return true;}
+    else {return false;}
+  }
 
+  static checkCardExistence(myApplicant, mycity, cardList,idNumber) {
+                  let controller = 0;
+                for(let i = 0; i<cardList.length; i++) {
+                  let id =cardList[i].applicant.toString();
+                  let myApplicantId = (id.slice(id.length - 11));
+                  if(myApplicant.toString() == myApplicantId) {
+                    if(mycity == cardList[i].city.toString()) {
+                      let confirmDelete = confirm ("Seçilen " + myApplicant+ " kullanıcısı için " + mycity + " şehri  adına daha önce kart oluşturulmuştur.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+                      if (confirmDelete) {
+                        var ele_rem1 = cardList.splice(i, 1);
+                        return true;
+                      } else {controller =1; return false;}
+                    }
+                  }
+
+                }
+                if(controller==0) {return true;}
+                else {return false;}
+
+          }
 
 }

@@ -1,10 +1,9 @@
 import { DataStorage } from './DataStorage';
 import { TableManager } from './TableManager';
-import { DiscountAmount } from './typeScriptFiles/enum/types';
-
 export class ListManager {
-  
-
+/**
+ * Yeni Kart kaydında kaydedilen kullanıcıların listelendiği kısım
+ */
   static createUserSelectList(myUser) {
     let selectList = document.createElement("select");
     selectList.id = "myUserSelect";
@@ -17,75 +16,83 @@ export class ListManager {
       selectList.appendChild(option);
     }
   }
+  /**
+   * Yeni kullanıcı eklendikçe, yeni kart kaydındaki kullanıcı selection listesini güncelleyen kısım
+   */
   static updateUserSelectionList() {
     let myUserSelectBox = document.getElementById("userField");
     myUserSelectBox.innerHTML = '';
     ListManager.createUserSelectList(myUserSelectBox);
   }
-
+/**
+ * Yeni Kart kaydında şehir selection listesinin hazırlandığı kısım
+ */
   static createCityOpportunitySelectList(myCityOpportunity) {
-
-   let selectListCity = document.createElement("select");
-   selectListCity.id = "myCityOpportunitySelect";
-   selectListCity.innerHTML = `<option value="none" selected disabled hidden required>Lütfen Şehir-Olanak Seçiniz`;
-   selectListCity.onchange = function(evt){
+    let selectListCity = document.createElement("select");
+    selectListCity.id = "myCityOpportunitySelect";
+    selectListCity.innerHTML = `<option value="none" selected disabled hidden required>Lütfen Şehir-Olanak Seçiniz`;
+    selectListCity.onchange = function(evt){
     var value = evt.target.value;
-    console.log(evt.target);
     ListManager.createCitySelectList(myCityOpportunity,value);
- };
-   myCityOpportunity.appendChild(selectListCity);
+                };
+    myCityOpportunity.appendChild(selectListCity);
+    let city: string[] = [];
+    for(let i = 0; i < DataStorage.cities.length; i++) {
+      city.push(DataStorage.cities[i].CityName);
+    }
+    city = city.filter((element, i) => i === city.indexOf(element));
 
- 
-    for (let i = 0; i < DataStorage.cities.length; i++) {
+    for (let i = 0; i < city.length; i++) {
       let option = document.createElement("option");
-      option.value = DataStorage.cities[i].CityName ;
-      option.text = DataStorage.cities[i].CityName ;
+      option.value = city[i] ;
+      option.text = city[i] ;
       selectListCity.appendChild(option);
     }
   }
-
-   static createCitySelectList(myCitySelectBox,citiesName?) {
-   const checkBoxList = document.getElementById("checkBoxList");
-   checkBoxList.innerHTML = "";
-
-     const myCityOpportunitySelect : HTMLInputElement  = document.getElementById("myCityOpportunitySelect") as HTMLInputElement;
-     var selectedCitiesName = myCityOpportunitySelect.options[myCityOpportunitySelect.selectedIndex].value; 
-     console.log(selectedCitiesName);
-     const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
+/**
+ * Yeni Kart kaydında şehir seçimine bağlı olarak olanakların checkbox lara koyulduğu kısım 
+ */
+    static createCitySelectList(myCitySelectBox,citiesName?) {
+    const checkBoxList = document.getElementById("checkBoxList");
+    checkBoxList.innerHTML = "";
+    const myCityOpportunitySelect : HTMLInputElement  = document.getElementById("myCityOpportunitySelect") as HTMLInputElement;
+    var selectedCitiesName = myCityOpportunitySelect.options[myCityOpportunitySelect.selectedIndex].value; 
+    const citiesList = DataStorage.cities.filter(item => item.CityName == citiesName);
 
     for (let i = 0; i < citiesList.length; i++) {
-      //document.getElementById("checkBoxList").innerHTML = "";
 
       let selectListCity = document.createElement("input");
       selectListCity.type = "checkbox";
       selectListCity.id = "inputSelectOpportunity" + i.toString();
       selectListCity.name = "selectOpportunity";
       selectListCity.value = citiesList[i].OpportunityName.toString();
-
       var label = document.createElement('label');
       label.htmlFor = "inputSelectOpportunity" + i.toString();
       label.appendChild(document.createTextNode(citiesList[i].OpportunityName));
-
-     
       checkBoxList.appendChild(selectListCity);
       checkBoxList.appendChild(label);
-
     }
-
   }
-
+/**
+ * Şehir Selectiın List için Ekleme, Düzenleme ve silmelere işlemelerine bağlı değişikliklerin güncellendiği kısım
+ */
   static updateCityOpportunitySelectionList() {
     let myCityOpportunitySelectBox = document.getElementById("cityOpportunityField");
     myCityOpportunitySelectBox.innerHTML = '';
     ListManager.createCityOpportunitySelectList(myCityOpportunitySelectBox);
   }
+  /**
+   *  olanak checkboxları için Ekleme, Düzenleme ve silmelere işlemelerine bağlı değişikliklerin güncellendiği kısım
+   */
   static updateCitySelectionList() {
     let myCityOpportunitySelectBox = document.getElementById("checkBoxList");
     myCityOpportunitySelectBox.innerHTML = '';
     ListManager.createCitySelectList(myCityOpportunitySelectBox);
   }
 
-
+/**
+ * Kayıtlı kullanıcılar için listeleme ve tablo oluşturan kısım
+ */
   static createUserList(userList) {
     let userTable = document.getElementById("userTableId");
     userTable.innerHTML = "";
@@ -161,7 +168,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#applicantPage';
-        TableManager.userEditTable(userList, i);
+        TableManager.editUserTable(userList, i);
         return;
         
       });
@@ -174,12 +181,18 @@ export class ListManager {
      userTable.appendChild(table);
 
   }
+  /**
+   * Kullanıcı listesinin Ekleme, Düzenleme ve silme işlemelerine bağlı değişiklikler ile güncellendiği kısım
+   */
   static refreshUserTable() {
     let element = document.getElementById("userTableReferedId");
     element.innerHTML = "";
     element.parentNode.removeChild(element);
     ListManager.createUserList(DataStorage.applicants);
   }
+  /**
+   * Kayıtlı şehir olanaklar için listeleme ve tablo oluşturan kısım
+   */
   static createCityOpportunityList(cityOpportunityList) {
     let cityOpportunityTable = document.getElementById("cityOpportunityTableId");
     cityOpportunityTable.innerHTML = '';
@@ -243,7 +256,7 @@ export class ListManager {
       cellEditButton.innerHTML = "Düzenle";
       cellEditButton.addEventListener("click", function() {
         window.location.href = '#cityPage';
-        TableManager.cityEditTable(cityOpportunityList,i);
+        TableManager.editCityTable(cityOpportunityList,i);
         return;
         
       });
@@ -256,13 +269,18 @@ export class ListManager {
      cityOpportunityTable.appendChild(table);
 
   }
+  /**
+   *  Şehir-Olanak listesinin Ekleme, Düzenleme ve silme işlemelerine bağlı değişiklikler ile güncellendiği kısım
+   */
   static refreshCityOpportunityTable() {
     let element = document.getElementById("cityOpportunityTableReferedId");
     element.innerHTML = "";
     element.parentNode.removeChild(element);
     ListManager.createCityOpportunityList(DataStorage.cities);
   }
-  
+  /**
+   *Kayıtlı kartlar için listeleme ve tablo oluşturan kısım
+   */
   static createCardList(cardList) {
     let cardTable = document.getElementById("cardTableId");
     cardTable.innerHTML = "";
@@ -273,104 +291,87 @@ export class ListManager {
                               <tr>
                               <th>Kart ID</th>
                               <th>Kart Son Kullanma Tarihi</th>
-                              <th>Kullancı İsmi</th>
-                              <th>Kullanıcı Soyismi</th>
-                              <th>Kullanıcı Kimlik Numarası</th>
+                              <th>Kullancı</th>
                               <th>Şehir</th>
+                              <th>Olanak</th>
                               <th>Sil</th>
                               <th>Düzenle</th>
-                              </tr>
+                              </trcardListcardListcardList>
 				    			    </thead>`;
-    debugger;
     cardTable.appendChild(table);
-    //debugger;
     for(let i = 0; i<cardList.length; i++) {
       let row = document.createElement("tr");
       let cell = document.createElement("td");
-      let cellText = document.createTextNode(cardList[i].CardIdentitty);
+      let cellText = document.createTextNode(cardList[i]._identity);
       cell.appendChild(cellText);
       row.appendChild(cell);
     
       cell = document.createElement("td");
-      cellText = document.createTextNode(cardList[i].ExpiryDate);
+      cellText = document.createTextNode(cardList[i]._expiryDate);
       cell.appendChild(cellText);
       row.appendChild(cell);
 
       cell = document.createElement("td");
-      cellText = document.createTextNode(cardList[i].User);
+      cellText = document.createTextNode(cardList[i].applicant);
       cell.appendChild(cellText);
       row.appendChild(cell);
-
-      // cell = document.createElement("td");
-      // cellText = document.createTextNode(cardList[i].ApplicantSurname);
-      // cell.appendChild(cellText);
-      // row.appendChild(cell);
+      cell = document.createElement("td");
+      cellText = document.createTextNode(cardList[i].city[0]);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+            //}
 
       cell = document.createElement("td");
       cellText = document.createTextNode(cardList[i].opportunity);
       cell.appendChild(cellText);
+      row.appendChild(cell);
 
       row.appendChild(cell);
+      let cellButtonDelete = document.createElement("button");
       cell = document.createElement("td");
-      cellText = document.createTextNode(cardList[i].City);
-      cell.appendChild(cellText);
+      cellButtonDelete.innerHTML = "Sil";
 
-/*      const citySelector :HTMLElement = document.getElementById("myCityOpportunitySelect");
-      let selectedCityName = citySelector.options[citySelector.selectedIndex].value;
-      let resultCity = DataStorage.cities.filter(item => item.CityName == selectedCityName);
-      for(let j=0; j<resultCity.length; j++) {
-        let rowOpportunity = document.createElement("tr");
-        let cellOpportunity = document.createElement("td");
-        let cellTextOpportunity = document.createTextNode(resultCity[i].OpportunityName);
+      cellButtonDelete.addEventListener("click", function () {
+        let confirmDelete = confirm ("Kart bilgisini silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
+        if (confirmDelete) {
+        DataStorage.cards = DataStorage.cards.filter (card => (card._identity) != (cardList[i]._identity));
+        ListManager.refreshCardTable();
+        }
+        return;
 
-        row.appendChild(cell);
-        let cellButtonDelete = document.createElement("button");
-        cell = document.createElement("td");
-        cellButtonDelete.innerHTML = "Sil";
-  
-        cellButtonDelete.addEventListener("click", function () {
-          let confirmDelete = confirm ("Kartı silmek istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
-          if (confirmDelete) {
-          DataStorage.cards = DataStorage.cards.filter (card => (card.CardIdentitty) != (cardList[i].CardIdentitty));
-          ListManager.refreshCardTable();
-          }
-          return;
-        } mainPage
-        );
-        debugger;
-        cell.appendChild(cellButtonDelete);
-        row.appendChild(cell);
-  
-        cell = document.createElement("td");
-        let cellEditButton = document.createElement("button");
-        cellEditButton.setAttribute("href", "cardPage");
-        cellEditButton.innerHTML = "Düzenle";
-        cellEditButton.addEventListener("click", function() {
-          window.location.href = '#cardPage';
-          TableManager.cardEditTable(cardList, i);
-          return;
-          
-        });
-        cell.appendChild(cellEditButton);
-        row.appendChild(cell);
-         t1body.appendChild(row);
+      } );
 
-      }
+      cell.appendChild(cellButtonDelete);
+      row.appendChild(cell);
 
-*/
+      cell = document.createElement("td");
+      let cellEditButton = document.createElement("button");
+      cellEditButton.innerHTML = "Düzenle";
+      cellEditButton.addEventListener("click", function() {
+        window.location.href = '#cardPage';
+        TableManager.editCardTable(cardList,i);
+        return;
+        
+      });
+      cell.appendChild(cellEditButton);
+      row.appendChild(cell);
+       t1body.appendChild(row);
+
      }
      table.appendChild(t1body);
      cardTable.appendChild(table);
+    }
 
-  }
   static refreshCardTable() {
     let element = document.getElementById("cardTableReferedId");
-    element.innerHTML = "";
+    element.innerHTML = '';
     element.parentNode.removeChild(element);
     ListManager.createCardList(DataStorage.cards);
   }
 
-  
+  /**
+   * Son kullanıcının kaldırıldığı kısım
+   */
   static removeLast() {
  // DataStorage.applicants.pop();
   DataStorage.applicants.splice(-1,1)

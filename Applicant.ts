@@ -1,15 +1,11 @@
-
 import { City } from "./City";
-import { ApplicantType, CitizenType } from "./typeScriptFiles/enum/types";
+import { IApplicant } from "./typeScriptFiles/interface/IApplicant";
+
 /**
  * Program başvuran kişinin bilgilerinin saklandığı sınıf
  */
 
-import { IApplicant } from "./typeScriptFiles/interface/IApplicant";
-
-
 export class Applicant implements IApplicant {
-
   private _applicantName: string;
   private _applicantSurname: string;
   private _applicantBirthDate: string;
@@ -17,11 +13,8 @@ export class Applicant implements IApplicant {
   private _typeOfApplicantBasedOnAge: string;
   private _typeOfApplicantBasedOnEducation: string;
 
-  constructor(applicantName: string, applicantSurname: string,
-     applicantBirthDate: string, _applicantID: number,
-     typeOfApplicantBasedOnAge: string,
-     typeOfApplicantBasedOnEducation: string) {
- 
+  constructor(applicantName: string, applicantSurname: string, applicantBirthDate: string, _applicantID: number,
+     typeOfApplicantBasedOnAge: string, typeOfApplicantBasedOnEducation: string) {
         this._applicantName = applicantName;
         this._applicantSurname = applicantSurname;
         this._applicantBirthDate = applicantBirthDate;
@@ -70,7 +63,6 @@ export class Applicant implements IApplicant {
     }
     set ApplicantTypeBasedOnEducation(applicantTypeBasedOnEducation : string){
       this._typeOfApplicantBasedOnEducation = applicantTypeBasedOnEducation;
-    }
-    
+    }  
 }
 

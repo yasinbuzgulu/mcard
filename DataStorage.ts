@@ -1,8 +1,6 @@
-import { ApplicantType, CitizenType } from './typeScriptFiles/enum/types';
 import { IApplicant } from './typeScriptFiles/interface/IApplicant';
 import { ICard } from './typeScriptFiles/interface/ICard';
 import { ICity } from './typeScriptFiles/interface/ICity';
-
 
 export class DataStorage {
   /**
@@ -19,66 +17,69 @@ static listApplicants() {
   alert("This is an alert message box. " + this.applicants[0]);  // display string message
 }
 
-static listCities() {
-
-}
-
-static listCards() {
-
-}
-
+/**
+ * Default olarak programa basılan Şehir-olanak bilgileri
+ */
 static createCityList() {
   this.cities.push(
       {
-        CityName: "Istanbul",
-        OpportunityName: "Otopark",
+        CityName: "ISTANBUL",
+        OpportunityName: "OTOPARK",
         PerYearPrice: 225,
-        TopLimitYearValue: 1
+        TopLimitYearValue: 1,
+        CityOpportunityId: 1
       },
       {
-        CityName: "Istanbul",
-        OpportunityName: "Kutuphane",
+        CityName: "ISTANBUL",
+        OpportunityName: "KUTUPHANE",
         PerYearPrice: 400,
-        TopLimitYearValue: 3
+        TopLimitYearValue: 3,
+        CityOpportunityId :2
       },
       {
-        CityName: "Istanbul",
-        OpportunityName: "Tiyatro",
+        CityName: "ISTANBUL",
+        OpportunityName: "TIYATRO",
         PerYearPrice: 400,
-        TopLimitYearValue: 3
+        TopLimitYearValue: 3,
+        CityOpportunityId:3
       },
       {
-        CityName: "Ankara",
-        OpportunityName: "Kutuphane",
+        CityName: "ANKARA",
+        OpportunityName: "KUTUPHANE",
         PerYearPrice: 300,
-        TopLimitYearValue: 4
+        TopLimitYearValue: 4,
+        CityOpportunityId:4
       },  {
-        CityName: "Bursa",
-        OpportunityName: "Kutuphane",
+        CityName: "BURSA",
+        OpportunityName: "KUTUPHANE",
         PerYearPrice: 250,
-        TopLimitYearValue: 5
+        TopLimitYearValue: 5,
+        CityOpportunityId:5
       },  {
-        CityName: "Adana",
-        OpportunityName: "Kutuphane",
+        CityName: "ADANA",
+        OpportunityName: "KUTUPHANE",
         PerYearPrice: 200,
-        TopLimitYearValue: 5
+        TopLimitYearValue: 5,
+        CityOpportunityId:6
       },  {
-        CityName: "Izmir",
-        OpportunityName: "Kutuphane",
+        CityName: "IZMIR",
+        OpportunityName: "KUTUPHANE",
         PerYearPrice: 300,
-        TopLimitYearValue: 4
+        TopLimitYearValue: 4,
+        CityOpportunityId:7
       });
 
     return this.cities;
   }
 
-  
-
+/**
+ * Default olarak programa basılan kullanıcı bilgileri
+ */
   static createApplicantlist() {
     this.applicants.push(
       {
-        ApplicantName :"Yasin",
-        ApplicantSurname: "Büzgülü",
+        ApplicantName :"YASIN",
+        ApplicantSurname: "BUZGULU",
         ApplicantBirthDate: "1997-09-05",
         ApplicantID: 53452312702,
         ApplicantTypeBasedOnAge: "Normal",
@@ -86,8 +87,6 @@ static createCityList() {
       });
       return this.applicants;
   }
-
-  
 }
 
 
