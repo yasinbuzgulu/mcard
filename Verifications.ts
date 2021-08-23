@@ -13,10 +13,8 @@ export class Verifications {
         if(idNumber.value == DataStorage.applicants[i].ApplicantID){
           let confirmDelete = confirm ("Girelen Id'ye (" + idNumber.value+ ") sahip kayıtlı bir kullanıcı var.\n Üzerine yazmak istediğinize emin misiniz? \n Dikkat, Bu işlem geri alınamaz!");
           if (confirmDelete) {
-          let b = DataStorage.applicants.filter(function (e) {
-            return e.value === idNumber.value;
-        });
-          DataStorage.applicants.splice(DataStorage.applicants.findIndex(e => e.value === idNumber.value),1);
+            var ele_rem1 = DataStorage.applicants.splice(i, 1);
+
           return true;
         }else {helper =1; return false;}
       }

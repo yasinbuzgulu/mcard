@@ -31,17 +31,14 @@ export class ApplicantManager {
       case "1": { typeOfApplicantBasedOnEducation = "Sivil";  break; }
       case "2": {  typeOfApplicantBasedOnEducation = "--";  }
     }
-    if(Verifications.checkID(applicantID)){
+    if(Verifications.checkID(applicantID) && Verifications.validateID(applicantID)){
 
-      //if(Verifications.validateID(applicantID)) {
     let newApplicant = new Applicant(applicantName.value.toUpperCase(), applicantSurname.value.toUpperCase(), applicantBirthDate.value, Number(applicantID.value), typeOfApplicantBasedOnAge, typeOfApplicantBasedOnEducation);
 
     DataStorage.applicants.push(newApplicant);
     ListManager.updateUserSelectionList();
     alert("Kullanıcı başarılı bir şekilde listeye eklendi.");
     TableManager.resetUserPage();
-   // }
-
      
   }
   
