@@ -24,6 +24,7 @@ export class Verifications {
   }
 
   static validateID(tcNumber) { 
+    
         let myId = tcNumber;
         tcNumber = (tcNumber.value).toString();
         

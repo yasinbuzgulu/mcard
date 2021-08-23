@@ -83,13 +83,13 @@
 										<label class="omrs-input-underlined">
 											
 											<input id="applicantIDAttach" type="number" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
-											maxlength="11"  ngModel required pattern="\d" placeholder="Kimlik Numaranızı Giriniz" >
+											maxlength="11"  required pattern="\d" placeholder="Kimlik Numaranızı Giriniz" >
 											
 										</label>
 									</div>
 									<div id="selectCitizenType" class="citizenField" >
 									<label for="CitizenType"> Başvuran Tipi (Yaşa Göre): </label>
-								<select required [value]="i" id="citizenTypeSelection" *ngFor="let priceRange of priceRangeOptions; let i=index" style="width: 350px">
+								<select required [value]="i" id="citizenTypeSelection" style="width: 350px">
 								<option value='none' selected="" disabled="" hidden="">Seçim yapınız</option>
 									<option value='0'>Çocuk(0-7)</option>
 									<option value='1'>Normal(8-64)</option>
@@ -105,7 +105,7 @@
 									<option value='2'>Hiçbiri</option>
 								</select>
 							</div>
-							<input id="newUserSavingButton" type="submit"  value="Kaydet"  value="Reset">
+							<input id="newUserSavingButton" class = "button" value="Kaydet"  value="Reset">
 							<a class="button" id="listUserButton" href="#userListSection" type="submit"> Listele </a>
 							</div>
 							</div>
