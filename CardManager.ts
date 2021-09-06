@@ -39,6 +39,7 @@ export class CardManager {
     let checkedCity : any = [];
     for(let i =0; i<resultCity.length; i++){
       checkedCity.push(resultCity[i].CityName.toUpperCase());
+      let numberOfOpportunity = resultCity[i];
     }
 
     const opportunitySelector : HTMLElement = document.getElementById("checkBoxList");

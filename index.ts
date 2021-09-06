@@ -76,7 +76,6 @@ listCitiesOpportunities.onclick = function() {
 const saveNewCard: HTMLElement = document.getElementById("newCardSavingButton");
 const cardForm : HTMLFormElement = document.getElementById("cardForm") as HTMLFormElement;
 saveNewCard.onclick = function() {
-
     CardManager.createCardObject();
     TableManager.resetCardPage();
     alert("Kart başarılı bir şekilde listeye eklendi.");

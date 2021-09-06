@@ -63,9 +63,6 @@ export class TableManager {
                 let cardPriceValueEdit = <HTMLInputElement>(  document.getElementById("cardPriceAttach")  );
                 cardPriceValueEdit.defaultValue = cardList[i]._price.toString(); 
 
-                console.log(opportunityAmount+"fırsat adet");
-                console.log(mySelectedOpportunity[1]+"seçili fırsat");
-
                 for (let j = 0; j<opportunityAmount; j++) {
                         let myOpportunityId = "inputSelectOpportunity" + j.toString();
                         let myCheckBox = <HTMLInputElement> document.getElementById(myOpportunityId);
